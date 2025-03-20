@@ -1,0 +1,17 @@
+.navbar {
+  padding-top: 0.2rem; /* Adjust the top padding */
+  padding-bottom: 0.2rem; /* Adjust the bottom padding */
+  height: 60%;
+}
+
+.code-block {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.sourceCode {
+  font-family: monospace;
+  font-size: 14px;
+}
