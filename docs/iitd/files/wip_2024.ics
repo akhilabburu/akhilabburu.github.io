@@ -1,0 +1,102 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-/Hello!//EN
+CALSCALE:GREGORIAN
+
+BEGIN:VEVENT
+SUMMARY:Mapping Literary Histories
+DTSTART:20241128T100000
+DTEND:20241128T123000
+LOCATION:LH212
+DESCRIPTION:Chair: Dickens Leonard\nPresenters:\n- Ayesha Abrar: Imagining a 'Modern' Literature: Urdu Poets and Poetics in Colonial Lahore\n- Balagopal S Menon: Between Mithya and Itihaas: Understanding Myths for Children\n- Reetu Raj Kashyap: Imagining the Assamese Community in the 1950s: Assam's Left and the significance of Rava's intervention\n- Haidamteu Zeme N: Naming and Inscribing: 'Naga' Peoples and 'Naga' Literature\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Marginal Subjectivities in Narratives
+DTSTART:20241128T133000
+DTEND:20241128T153000
+LOCATION:LH212
+DESCRIPTION:Chair: Simona Sawhney\nPresenters:\n- Shyista Aamir Khan: Life Writing as a Critical Practice: Intimate Publics and its Affective Politics\n- A. Tarun: Documenting Madness: History, Experience, and Authenticity\n- Deepak Kumar Gupta: "The Envied Beauty and the Visionary Saint": Blind Subjects in Bankimchandra's Rajani and Premchand's Rangbhoomi\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Linguistics and Language Processing
+DTSTART:20241128T160000
+DTEND:20241128T180000
+LOCATION:LH212
+DESCRIPTION:Chair: Sahiinii Lemaina Veikho\nPresenters:\n- Nayana Raj: What can predictive processing tell us about the mental lexicon? Insights from Malayalam\n- Pranab Bagartti: Syntactic similarity-based agreement attraction in Hindi production\n- Kanishka Jain: Towards Efficient Identification of Complex Predicates in Hindi\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Technology, Governance, and Economic Policy
+DTSTART:20241128T100000
+DTEND:20241128T123000
+LOCATION:LH213
+DESCRIPTION:Chair: Debasis Mondal\nPresenters:\n- Daphibiang K Thanghiew: Shadow Banking And Its Implications On The Real Economy In India\n- Hisham Ali Ashraf: Understanding Voter Behavior in Concurrent Elections / The Politics of Gubernatorial Procrastination\n- Suranjana Kundu: Keeping the interest rate low for longer improves employment situation in India\n- Subhrasil Chingri: Exploring the interaction of automation and environment\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Labor Markets and Employment Dynamics
+DTSTART:20241128T133000
+DTEND:20241128T153000
+LOCATION:LH213
+DESCRIPTION:Chair: Reetika Khera\nPresenters:\n- Krishna Priya Choragudi: Employment Guarantee in Urban India: How has Rajasthan's experiment fared?\n- Md Shamshe Alam: Migrant Workers, Informality, and Social Mobility: Evidence from Ludhiana and Faridabad\n- Dhananjay Kumar Gochhayat: Caste, migration and the labour market: evidence from Odisha\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Women and Child (Care Economy)
+DTSTART:20241128T160000
+DTEND:20241128T180000
+LOCATION:LH213
+DESCRIPTION:Chair: Ishan Anand\nPresenters:\n- Bharti Kumari: Modeling care economy in India: a strategic approach\n- Shivani Hasija: Women's participation in the domestic workers' labour market in India: Examining the role of social and institutional structures\n- Shabnam: Too far to walk: Transportation Barrier, Maternal and Child Healthcare Utilization and Outcomes in India\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Notes from the field
+DTSTART:20241129T100000
+DTEND:20241129T123000
+LOCATION:LH212
+DESCRIPTION:Chair: Mahuya Bandyopadhyay\nPresenters:\n- Umtul Aleem Kokab: Voices of refusal: Exploring religion through field inquiries\n- Neha Singh: Hashtag as History: A Study of the Bhima Koregaon Case through Twitter Archives\n- Debanshu Panwar: Field Report: Field work conducted in Karol Bagh and Rajinder Nagar (August-November, 2024)\n- Rashmi Kumar: Dalit feminist experience of being in the field: The oscillation between objectivity and emotions as a Native ethnographer\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:State and Governance
+DTSTART:20241129T133000
+DTEND:20241129T153000
+LOCATION:LH212
+DESCRIPTION:Chair: Madhulika Sonkar\nPresenters:\n- Vaivab Das: The Reality of India's Transgender Welfare Boards: What an RTI Investigation Reveals\n- Shambhavi Sharma: Making of Different 'Voices Against 377'\n- Aishwarya Chandran: "Don't trust your husband": Domestic abuse discourse and the policing of working class families\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Space and Time
+DTSTART:20241129T160000
+DTEND:20241129T180000
+LOCATION:LH212
+DESCRIPTION:Chair: Misria Shaik Ali\nPresenters:\n- Swapnil Pareek: Neighbourhoods of Delhi: A Conceptual, Contextual, and Historical Analysis of Delhi's Neighbourhoods\n- Vageesh Vishnoi: Ethnographic Perspective on Timescape and Temporal Rythms of Food Delivery Gig Workers\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Performance
+DTSTART:20241129T100000
+DTEND:20241129T123000
+LOCATION:LH213
+DESCRIPTION:Chair: Milind Wakankar\nPresenters:\n- Pritam Majumdar: From Mangalkavya to Palagaan: An Overview of the Oral Performance Tradition of Manasa Palagaan in Dakshin Dinajpur\n- Ankana Das: Where lies the boundaries of a Sacred Geography? Interplay of Ritual, Mythical, and Jural Boundaries in the Indian Sundarban\n- Subhabrata Patra: Exploring the Enigma of Bhadralok in Bengal: An Inquiry Beyond Mainstream\n- Ananya Pattnaik: Religious change and supernaturality: Accounts of sorcerers as contestations around religious identities among Kondhs of Odisha\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Reimagining Spaces
+DTSTART:20241129T133000
+DTEND:20241129T153000
+LOCATION:LH213
+DESCRIPTION:Chair: Richa Kumar\nPresenters:\n- Tsering Lhamo: A Study of the Pastoralist Nomads at Changthang, Eastern Ladakh: Applying Decolonising Framework\n- Rahul Ganguly: What are the different ways of desiring the State in the Darjeeling Hills? An Exploration of the different political imaginaries in the Darjeeling Hills after the Gorkhaland Andolan of 2017\n- Sohini Chakraborty: Relocation of Refugees, Re-invention of Places: Hydrosocial Understanding of Crises and Agency of Sagar Islanders in the Indian Sundarban\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+BEGIN:VEVENT
+SUMMARY:Epistemologies and others
+DTSTART:20241129T160000
+DTEND:20241129T180000
+LOCATION:LH213
+DESCRIPTION:Chair: Divya Dwivedi\nPresenters:\n- Sneha Sharma: Catastrophe and the Province: A Reading of Phanishwar Nath Renu's Juloos\n- Florence Laldinpuii: Different Mizo 'Deathways': Politics of Death and the Functions of Language\n- Shivanand Thorat: Understanding Driving Safety: Cognitive Control, Risk, and Decision-making\n\nAbstract Booklet: https://owncloud.iitd.ac.in/nextcloud/index.php/s/Y5MCZHn9HdL2gkP\nSchedule: https://docs.google.com/spreadsheets/d/e/2PACX-1vTrDQuqrXLh6tUxgbZ82SO-T9kIiy2OmjT0o1M4P_p_6As2uXr2y8DO_RakgddDMjgtIxSV-tLGKZXx/pubhtml
+END:VEVENT
+
+END:VCALENDAR
