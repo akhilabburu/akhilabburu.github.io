@@ -1,0 +1,48 @@
+---
+title: Convert Kerberos to entry number (and vice versa)
+format:
+  html:
+    toc: true
+    #code-block-border-left: false
+    code-copy: true
+    other-links:
+      - text: Excel file
+        icon: file-earmark-spreadsheet
+        href: files/convert.xlsx
+    grid: 
+      sidebar-width: 10px
+---
+
+### Intro
+
+A student in IITD is identified by two similar looking numbers:
+
+1.  An entry number in the format of: *2020ABC1234*
+2.  A Kerberos id in the format of: *abc201234*
+
+The problem comes when different systems of IIT, like ERP and Moodle, don’t use the same. These differences mean that its not straightforward to copy-paste data across the systems. Matching it manually is not really feasible for large classes.
+
+Thankfully these two formats are easily broken down into components.
+
+Entry number: `YYYY` + `program code` + `id`\
+Kerberos: `program code` + `YY` + `id`
+
+### Excel file
+
+These patterns also mean that the two are freely convertible to each other with some excel manipulation. You can download this [excel file](files/convert.xlsx) to convert one from another. Or, use the formulas given here.
+
+### Formulas
+
+Convert an entry number in cell *A2* to Kerberos id format:
+
+```         
+=CONCAT(LOWER(MID(A2,5,3)), MID(A2,3,2), RIGHT(A2,4))
+```
+
+Convert a Kerberos id in cell *B2* to entry number format:
+
+```         
+=CONCAT(CONCAT(20, MID(B2,4,2)), UPPER(LEFT(B2,3)), RIGHT(B2,4))
+```
+
+If Google Sheets, use CONCATENATE instead of CONCAT.

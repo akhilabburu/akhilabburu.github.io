@@ -1,0 +1,18 @@
+---
+title: Work in Progress Calendar (2024)
+toc: false
+---
+## {}
+Download here: [wip.ics](files/wip_2024.ics)
+
+
+::: {.callout-note appearance="simple" collapse="true"}
+
+### Instructions
+
+Easiest: Download it on a phone and tap on it.
+
+Otherwise, follow this link: [https://support.google.com/calendar/answer/37118](https://support.google.com/calendar/answer/37118)
+
+:::
+

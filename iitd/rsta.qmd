@@ -1,0 +1,142 @@
+---
+title: An unofficial guide to RSTA
+toc: true
+---
+*Last Updated: 2025-03-20*
+
+This is an opinionated supplement to the [official document](https://hss.iitd.ac.in/sites/default/files/pdf/How%20to%20Apply%20for%20IITD%20International%20Travel%20Grant_0.pdf). IIT bureaucracy mutates quickly, so consider this your unofficial survival guide. This is obviously neither official nor endorsed.
+
+### Things to do, at a high level
+- Book the visa slot!
+- Check the dates for the next DRC and finish all the departmental-level paperwork.
+- Apply for NOC and Bonafide once the RSTA is approved at the department.
+- Travel and (cancellable) stay arrangements.
+- Visa documents and the cover letter.
+- ...
+- Profit
+
+### Applying
+- NOC and Bona fide are two separate things
+- Once the ~~DRC~~ HoD approves your RSTA, you can send an application to the HOD (via email) asking for these two things.
+- The title of the program should say conference and not a workshop, etc. If it does say workshop, you might have to add additional documents to prove that its a conference.
+- This is how my directory looked like
+  - hss_submit/
+    - ex_india.pdf
+    - leave_duty.pdf
+    - leave_personal.pdf
+    - rsta.pdf
+    - attach/
+      - acceptance.pdf
+      - conf_website.pdf
+      - csir.pdf
+      - dbt.pdf
+- Allow ample time for things at the PG section. They have a tendency to lose things.
+	- Tip: IITD has a ‘dak’ system where people ferry documents between the departments. Each document has a number associated with it that you can ‘track’. This also means you can intercept your papers, carry them to the next stop, and get things done.
+	- Familiarise yourself with the person responsible for HSS at the PG section.
+	- If the invitation letter is not in English, enclose a self-attested Google translated English version.
+- The route goes something like this: HSS Office -> PG Diary & Dispatch -> Dealing Assistant -> Supdt. -> Asst. Registrar (or Sr. Consultant) -> Dean Acad (or Asso. Dean PG Research)
+- At each stage, take photos/copies of each of the documents.
+- Make sure all the dates match across the different applications. For example, your leave form and your ex-India leave form.
+- For rejection letters from external funding agencies
+	- There is a list in the official guide
+	- According to the RSTA form, it is compulsory to show proof of rejection in the PG section. Do not stress too much if you do not receive a response. 'Sometimes' they are okay with proof of application.
+- Timelines: No more than a week at the department after the DRC meeting. About the same duration at the PG section, but if there is no update, go in person to LHC to inquire
+
+::: {.callout-note appearance="simple" collapse="true"}
+
+#### Email template for external agencies
+
+Dear Sir/Ma'am,
+
+I am XXX, a full-time PhD student at the Indian Institute of Technology Delhi. My work titled "Super Cool Paper" has recently been accepted for presentation at the international best conference ever to be held in Mars Colony 341 from February 29-30.
+
+I would be grateful if your institution could support me with travel funding assistance and help facilitate my participation.
+
+Thank you for your consideration.
+
+Sincerely,\
+sincere student\
+IIT Delhi
+
+:::
+
+### Tickets
+- Use IRCTC.
+- Or the travel desk if you need dummy tickets. Use these at your own risk.
+- Dates: You are generally reimbursed for tickets even if they are two or three days outside of your conference dates.
+
+### Visa tips
+- Plan well in advance. All institute documents take longer than they should.
+- For the bank statement, do not get the printout at the bank. They charge extra
+	- Print out the last 6 months (or whatever the visa requires) elsewhere
+	- Tip: Print each month separately if your balance was too low six months ago.
+	- The bank will stamp each page and sign.
+- These are **some** common things that you need have prepared for the visa. Depends on the country!
+	- Bank statement
+	- Cover letter
+	- Flight tickets
+	- Hotel tickets
+	- IITD Bona fide
+	- IITD NOC
+	- IITD RSTA notification
+	- IITD Ex-India leave
+	- Insurance
+	- Invite
+	- Visa application form
+- If you are planning to stay back for some tourism, mention it in the cover letter. They might issue a visa for too short a duration otherwise.
+- Do not depend too much on the generosity of ChatGPT; add a human touch.
+
+### Forex
+- You can pay for things in three ways: cash, debit, and a credit card.
+- Cash
+	- You can get foreign currency from Thomas Cook, SBI bank or services like bookmyforex. The travel desk also offers good rates and is relatively hassle-free.
+- Considerations when applying for forex cards.
+	- Most credit cards allow forex transactions with a fee.
+	- Consider applying for cards with zero forex charges. Some examples: Niyo (credit/debit), Scapia (credit).
+	- You can also apply for a forex card in many banks (including IIT’s SBI branch) or travel agencies like Thomas Cook.
+- While it's better to have all three, your destination country should dictate what you rely on the most. A reasonable amount of cash on hand is a must, of course.
+- Payment by a card also acts as an additional proof of a payment
+- Transit is another factor. In some European countries, one could tap a credit/debit card instead of buying a separate ticket for local transport. Some might even charge an extra fee if you buy a physical ticket.
+
+### Phone
+- If your trip is short and your destination country has good public wifi coverage, you might get away with just a roaming pack. Airtel, for instance, has an international roaming pack for 899 that gives you 1 GB of data for 10 days (along with some minutes).
+
+### Bills
+- All bills will be verified by the PG section. This means that you need to care for them.
+- Preserve all bills in a ziploc bag. Most bills from POS machines are on [thermal paper](https://en.wikipedia.org/wiki/Thermal_paper), and they fade out really quickly.
+- Take photos/scans of each of the bills, just in case.
+
+### Reimbursement
+- You’ll have to attach copies of these documents along with the application and the bills. You might wonder why they would need this since they are the ones who approved it. I wonder too.
+	- RSTA approval copy
+	- Ex-India copy
+- If possible, attach a letter certifying your attendance at the conference.
+- All the original bills must be submitted to the accounts section through the HSS office.
+	- Staple each day’s bill on a separate A4 sheet
+		- Keep photos/copies for yourself!
+	- Maintain a spreadsheet tallying each day and the total on a single page. Make this as easy to read as possible—it makes the accounts section's job easier.
+
+::: {.callout-note appearance="simple" collapse="true"}
+
+#### An arbitrary format that I came up with
+
+| No. | Category         | Amount | INR              | Date       | Bill |
+| --- | ---------------- | ------ | ---------------- | ---------- | ---- |
+| 1.x | Travel to conf.  | Amount | Converted amount | DD-MM-YYYY | Y/N  |
+| 1.1 | Flight           |        |                  |            |      |
+| 1.2 | Train            |        |                  |            |      |
+| 2   | Conference fee   |        |                  |            |      |
+| 3.x | Visa etc.        |        |                  |            |      |
+| 3.1 | VFS              |        |                  |            |      |
+| 3.2 | Insurance        |        |                  |            |      |
+| 4.x | Accommodation    |        |                  |            |      |
+| 4.1 | Hotel 1          |        |                  |            |      |
+| 4.2 | Dorm 1           |        |                  |            |      |
+| 5.x | Local transport  |        |                  |            |      |
+| 5.1 | Cab 1            |        |                  |            |      |
+| 5.2 | Train 2          |        |                  |            |      |
+| 6.x | Food & Beverages |        |                  |            |      |
+| 6.1 | Breakfast        |        |                  |            |      |
+| 6.2 | Lunch            |        |                  |            |      |
+
+:::

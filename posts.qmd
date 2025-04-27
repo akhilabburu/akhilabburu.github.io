@@ -1,0 +1,93 @@
+---
+execute:
+  cache: false
+format: 
+  html: 
+    toc: false
+---
+
+### Fun
+- [*Links*](links/index.qmd)
+- [front pages](projects/news.qmd)
+- [pretty map](projects/map.qmd)
+- [cricket](projects/cricket.qmd)
+
+
+```{r generate links from iitd folder without depends}
+#| echo: false
+#| results: asis
+#| warning: false
+
+
+iitd_files <- list.files("iitd", pattern = "\\.qmd$", full.names = TRUE)
+iitd_titles <- sapply(iitd_files, function(file) {
+  # Read the first 10 lines
+  lines <- readLines(file, n = 20)
+  
+  # Find YAML front matter
+  yaml_start <- grep("^---", lines)[1]
+  yaml_end <- grep("^---", lines)[2]
+  
+  # If YAML front matter exists
+  if (!is.na(yaml_start) && !is.na(yaml_end)) {
+    yaml_lines <- lines[(yaml_start + 1):(yaml_end - 1)]
+    
+    # Extract title manually
+    title_line <- grep("^title:", yaml_lines, value = TRUE)
+    if (length(title_line) > 0) {
+      # Remove 'title:' and any surrounding quotes
+      title <- sub("^title:\\s*[\"']?(.+?)[\"']?\\s*$", "\\1", title_line)
+      if (nchar(title) > 0) return(title)
+    }
+  }
+  
+  # Fallback to filename if no title found
+  basename(file)
+})
+
+# Create links
+iitd_links <- sapply(iitd_files, function(file) {
+  paste0("[", iitd_titles[file], "](", file, ")")
+})
+
+cat("### IITD\n")
+cat(paste("-", iitd_links, collapse = "\n"))
+```
+
+
+```{r generate links from iitd folder}
+#| echo: false
+#| results: asis
+#| warning: false
+#| eval: false
+ 
+library(fs)
+library(yaml)
+
+iitd_files <- dir_ls("iitd", glob = "*.qmd")
+iitd_titles <- sapply(iitd_files, function(file) {
+  content <- readLines(file, n = 10)
+  yaml_data <- yaml.load(content[grep("^---", content)[1]:grep("^---", content)[2]])
+  title <- if (!is.null(yaml_data$title)) yaml_data$title else basename(file)
+  title
+})
+
+iitd_links <- sapply(iitd_files, function(file) {
+  paste0("[", iitd_titles[file], "](", file, ")")
+})
+
+cat("### IITD\n")
+cat(paste("-", iitd_links, collapse = "\n"))
+```
+
+```{r old}
+#| eval: false
+#| echo: false
+
+### IITD
+# - [Wi-Fi](iitd/wifi.qmd)\
+# - [Convert Kerberos to entry number (and vice versa)](iitd/convert_entry.qmd)\
+# - [Work in Progress Calendar (2024)](iitd/wip_2024.qmd)\
+# - [An unofficial guide to RSTA](iitd/rsta.qmd)\
+# - [Student orgs](iitd/student_orgs.qmd)\
+```

@@ -1,0 +1,15 @@
+{
+  "hash": "886cee1318e52ed752af669f807a1abb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\nexecute:\n  cache: false\nformat: \n  html: \n    toc: false\n---\n\n\n\n\n### Fun\n- [*Links*](links/index.qmd)\n- [front pages](projects/news.qmd)\n- [pretty map](projects/map.qmd)\n- [cricket](projects/cricket.qmd)\n\n\n\n\n\n### IITD\n- [Convert Kerberos to entry number (and vice versa)](iitd/convert_entry.qmd)\n- [An unofficial guide to RSTA](iitd/rsta.qmd)\n- [Student bodies of IIT Delhi](iitd/student_orgs.qmd)\n- [Wi-Fi settings on Android 11+](iitd/wifi.qmd)\n- [Work in Progress Calendar (2024)](iitd/wip_2024.qmd)\n\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

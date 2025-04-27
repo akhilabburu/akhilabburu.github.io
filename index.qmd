@@ -1,0 +1,23 @@
+---
+title: ""
+about:
+  template: solana
+  image: mug.jpg
+  image-width: 11em
+  image-alt: "profile photo"
+---
+Hi!
+
+I am a PhD candidate at the [Indian Institute of Technology Delhi](https://home.iitd.ac.in/). I work with [Prof. Sumitava Mukherjee](https://web.iitd.ac.in/~sm1/) and [Prof. Sumeet Agarwal](https://web.iitd.ac.in/~sumeet/). 
+
+My core research interest lies in judgment and decision making, understanding how people make the choices they do. My current work involves developing and rigorously comparing computational models (using MLE, Bayesian methods, etc.) to better understand phenomena like loss aversion and its variability. I'm also keenly interested in metascience, computational social science, and the intersection of human and artificial intelligence.
+
+Email: akhil.abburu at hss.iitd.ac.in
+
+
+::: {.content-hidden}
+:::
+<body class="home-page">
+
+</body>
+

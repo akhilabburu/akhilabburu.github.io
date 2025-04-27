@@ -1,0 +1,480 @@
+---
+title: "Cricket"
+format: 
+  html:
+    code-fold: true
+message: false
+warning: false
+---
+old ipl project. Lots of suboptimal decisions
+date:2022-04-17
+rendered: 2025-03-31
+
+```{r Load libraries}
+# Load necessary libraries
+# Using suppressPackageStartupMessages to keep output clean
+suppressPackageStartupMessages({
+  library(ggtext)
+  library(lme4)
+  library(tidyverse)
+  library(plotly)
+  library(viridisLite) # For better color scales
+})
+
+```
+
+# Indian Premier League
+
+The goal of the present project is to download, clean, wrangle, and obtain insights from ipl data.
+
+The data will be downloaded from cricsheet.org in a zip format. We will unzip the files to a directory.
+
+```{r Download and unzip files}
+#| eval: false
+temp <- tempfile()
+download.file("https://cricsheet.org/downloads/ipl_csv2.zip", temp)
+unzip(zipfile = temp, exdir = "ipl_data") #takes a couple of minutes
+rm(temp)
+```
+
+The next step would be load the data to R. We can achieve that using the `read_csv` function. However, while this data file is large and contains ball-by-ball details, it does not have match info i.e., who won the match and by how many wickets/runs.
+
+We will obtain that data using the match info files. We can read only those files by adding them as a list for now.
+
+```{r Load match data and info files list}
+#| eval: false
+df <- read_csv("ipl_data/all_matches.csv") # read the data
+files <- list.files(path = "ipl_data", pattern = "*_info.csv") #load the paths of
+#metadata files ----
+files <- paste0("ipl_data/", files) #append
+```
+
+One issue is that there are hundreds of files that match our pattern, and it is not possible to load them and use them effectively if we do it manually. One solution is to write a function that takes each of the file, appends it to a dataframe.
+
+```{r Clean up the info data files and makes them into one file}
+#| eval: false
+f1 <- function(x) {
+  y <- read.table(files[x], #load file
+                  sep = ",",
+                  skip = 2,
+                  col.names = paste0("V",seq_len(5)), fill = TRUE)
+  y <- y[,-1] #remove the first column 'info'
+
+  y <- y %>% group_by(V2) %>% #number the column so that it can be pivoted wo errors
+    mutate(id = seq_along(V2)) %>%
+    ungroup() %>%
+    mutate(V2 = paste0(.$V2, .$id)) %>%
+    select(1, 2)
+
+  y <- pivot_wider(y, names_from = V2, values_from = V3) %>% # lay data on side
+    mutate(match_id = parse_number(file.path(files[x]))) %>%
+    select(!starts_with(c("player","regis")))
+  # the info file doesn't contain the match id! Parsing it from file names
+}
+
+df_info <- f1(1) # read the (meta)data file one
+df_info <- df_info[FALSE, ] #keep only the headers
+for (i in 1:length(files)) {
+  X <- f1(i)
+
+  df_info <- bind_rows(df_info, X)
+
+}
+
+df_info <- df_info %>% 
+  rename_with(~str_remove(., "1")) %>%
+  select(match_id, match_number, everything()) %>%
+  select(!c(event, gender, venue)) %>%
+  arrange(match_id)
+
+```
+
+Let's take a look at the data frames we have so far.
+
+```{r Look at dataframes head}
+#| eval: false
+head(df)
+head(df_info)
+```
+
+```{r Join dataframes and write CSV}
+#| eval: false
+final_df <- inner_join(df, df_info, by = 'match_id') # ugly but works..
+
+#Clean up seasons
+final_df <- final_df %>% 
+    mutate(season.x = case_when(
+        season.y == "2007/08" ~ '2008',
+        season.y == "2009/10" ~ '2010',
+        season.y == "2020/21" ~ '2020',
+        TRUE ~ season.y),
+        season.x = as.numeric(as.character(season.x))) 
+
+#write.csv(final_df, "final_df.csv")
+nanoparquet::write_parquet(final_df, "cricket/final_df.parquet") # 2025 change: saved 100x disk space
+```
+
+
+## Load the final cleaned up data
+```{r}
+#final_df <- read.csv("final_df.csv")
+final_df <- nanoparquet::read_parquet("cricket/final_df.parquet")
+```
+
+List of all teams that have played IPL so far
+```{r}
+(team_list <- final_df %>%
+  distinct(team))
+```
+
+
+## Exploring the Data
+Lets start by making a function that gives some basic details about any given team
+```{r}
+team_stat <- function(team_name) {
+
+f1 <- final_df %>% #_team_select
+    group_by(season.x) %>%
+    arrange(desc(match_id)) %>%
+    filter(grepl(team_name, team, ignore.case = T) |
+             grepl(team_name, team2, ignore.case = T))
+
+f2 <- distinct(.data = f1, match_id) %>% count() #match count
+
+f3 <- filter(f1, grepl(team_name, winner, ignore.case = T)) %>%#winning matches
+    distinct(match_id) %>% count()
+
+f4 <- filter(f1, grepl(team_name, winner, ignore.case = T))
+
+df <- inner_join(f2, f3, by = "season.x") %>%
+  rename(matches = n.x, wins = n.y) %>%
+  mutate(win_rate = round(wins/matches * 100))
+
+
+df$team <- f4[1,36] # add a new column with the team name
+df <- df %>% unnest(last_col()) %>% 
+  rename(team = last_col()) %>% #rename the column
+  ungroup() #ungroup the df
+
+return(df)
+
+}
+```
+This particular function takes regex input
+
+```{r}
+team_stat("hyd")
+
+```
+
+```{r}
+team_stat("delhi")
+
+team_stat("giants") #vs
+team_stat("giant$")
+```
+
+## How did any single team perform over the years?
+```{r}
+plot_team <- function(x3){
+p1 <- team_stat(x3)
+ggplot(p1, aes(x = as.factor(season.x), y = win_rate, group = 1)) +
+  geom_point() +
+  geom_line() +
+  scale_y_continuous(limits = c(0, 100))+
+  labs(
+    x = "Season",
+    y = "Win Rate",
+    title = paste(first(p1[1,5]), "over the years")) #grabs the name of the team
+}
+```
+
+Performance of SRH(DC) over the years
+```{r}
+plot_team("hyd|deccan") %>% ggplotly()
+```
+
+Delhi
+```{r}
+plot_team("delhi") %>% ggplotly()
+```
+
+Performance of all the teams over the years
+```{r Plot of winning rates, message=FALSE, warning=FALSE}
+team_list2 <- team_list %>% filter(!grepl("X", team)) # Remove KXIPunjab
+
+d2 <- NULL # create a empty df for stats of all teams
+for (i in 1:nrow(team_list2)) {
+  d1 <- team_stat(word(team_list2$team[i], 1))
+  d2 <- bind_rows(d2,d1)
+}
+
+p4 <- ggplot(d2, aes(x = season.x, y = win_rate, group = 1)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~team)+
+  scale_y_continuous(limits = c(0, 100))+
+  labs(
+    x = "",
+    y = "Win Rate",
+    title = "Winning Rate of the teams over the years")
+
+ggplotly(p4)
+
+```
+
+
+Which team has won the most matches?
+
+```{r}
+final_df %>%
+  distinct(match_id,.keep_all = TRUE) %>%
+  count(winner) %>%
+  arrange(desc(n)) %>%
+  head(5) %>%
+  ggplot(aes(x = reorder(winner,desc(n)), y = n))+
+  geom_col()+
+  labs(
+    x = "Team",
+    y = "Number of Wins")+
+  scale_x_discrete(label = function(x) str_trunc(x, 19))+
+  scale_y_continuous(expand = c(0,0), limits= c(0, 200))
+
+```
+
+How many seasons has the IPL been going on for?
+```{r}
+ipl_season <- final_df %>%  
+   distinct(season.x)
+ipl_season %>% count()
+```
+
+Lets write a function to get the top-scoring batmen of any given year
+```{r}
+high_scorer <- function(x = "", y = "", n = 10){
+# x is a specific year
+# y is a specific player
+# n is the number of results to show
+  y1 <- final_df %>%
+    filter(grepl(x, season.x) & grepl(y, striker, ignore.case = T)) %>%
+    group_by(striker) %>%
+    summarise(runs = sum(runs_off_bat)) %>%
+    arrange(desc(runs)) %>%
+    head(n)
+
+
+  y1 <- y1 %>% mutate(rank = row_number(), year = x) %>%
+    select(3,2,1,4) %>% ungroup()
+
+  #write a loop to generate boundaries, averages etc. for each batsmen?
+
+  bound <- NULL
+  for (i in min(y1$rank):max(y1$rank)) {
+    striker_interest <- y1$striker[i]
+
+    df_interest <- final_df %>% filter(grepl(x, season.x) &
+                                         striker %in% striker_interest)
+
+    sixes <- df_interest %>%
+      group_by(striker) %>%
+      filter(runs_off_bat == 6) %>%
+      count() %>%
+      ungroup() %>%
+      rename(sixes = n)
+
+    fours <- df_interest %>%
+      group_by(striker) %>%
+      filter(runs_off_bat == 4) %>%
+      count() %>%
+      ungroup() %>%
+      rename(fours = n)
+
+    fifties <- df_interest %>%
+      group_by(striker, match_id) %>%
+      summarise(runs = sum(runs_off_bat)) %>%
+      filter(runs >= 50) %>% count() %>% ungroup() %>%
+      rename(fifties = n)
+
+    hundreds <- df_interest %>%
+      group_by(striker, match_id) %>%
+      summarise(runs = sum(runs_off_bat)) %>%
+      filter(runs >= 100) %>% count() %>% ungroup() %>%
+      rename(hundreds = n)
+
+    not_out <- final_df %>% filter(grepl(x, season.x)  &
+                                     (striker %in% striker_interest |
+                                        non_striker %in% striker_interest)) %>%
+      filter(ball >= 19.6) %>%
+      dplyr::distinct(match_id) %>%
+      count() %>%
+      rename(not_out = n) %>%
+      mutate(striker = striker_interest)#number of times not out
+
+    runs <- df_interest %>%
+      summarise(runs = sum(runs_off_bat)) %>%
+      mutate(striker = striker_interest)
+
+    matches <- final_df %>% filter(grepl(x, season.x)  &
+                                     (striker %in% striker_interest |
+                                        non_striker %in% striker_interest)) %>%
+      dplyr::distinct(match_id) %>%
+      count() %>%
+      rename(matches = n) %>%
+      mutate(striker = striker_interest)
+
+    row_df <-  reduce(list(matches, fours, sixes, fifties, hundreds, not_out, runs), left_join, by = 'striker')
+
+    row_df <- row_df %>% mutate(avg = round(runs/(matches - not_out), 2)) %>%
+      select(-runs)
+
+    bound <- bind_rows(bound, row_df)
+
+    bound <- bound %>% replace(is.na(.), 0)
+
+  }
+  y1 <- left_join(bound, y1, by = 'striker')
+
+  y1 <- y1 %>% select(11, 9, 2, 1, everything())
+
+  if (y == "") {
+  y1 <- y1 # if there is an empty value, then this changes the rank column
+  } else {
+ y1 <- y1 %>% mutate(rank = NA) 
+  }
+  
+    if (x >= 2008) {
+  y1 <- y1 # if there is an empty value, then this changes the year column
+  } else {
+ y1 <- y1 %>% mutate(year = NA) 
+}
+  
+  return(y1)
+}
+
+```
+
+This function takes year, name of player, and number of entries to return as the input
+
+```{r}
+high_scorer(x = 2024, y = , n = 5) # another change in 2025
+```
+
+Number of runs of the top scorers across the years
+```{r}
+# hs2 <- NULL
+# for (i in min(ipl_season):max(ipl_season)) {
+#   hs <- high_scorer(x = i)
+#   hs2 <- rbind(hs2,hs)
+# }
+# 
+# nanoparquet::write_parquet(hs2, "cricket/hs2.parquet")
+hs2 <- nanoparquet::read_parquet("cricket/hs2.parquet")
+
+hs2 %>%
+  filter(year >= 2011) %>%
+  ggplot(aes(x = as.factor(rank),
+             y = runs))+
+  geom_col()+
+  facet_wrap(~year)+
+  labs(
+    x = "",
+    y = "Runs",
+    title = "Total runs of the top 10 run scorers over the past seasons")
+```
+
+
+
+Some players have consistently been in the top-10 over multiple seasons. Though
+the trend seems to be decreasing. The top five runscorers repeat many times.
+```{r}
+(hs_freq <- hs2 %>% filter(year >= 2011) %>%
+    count(striker) %>% arrange(desc(n)) %>% head(5))
+```
+
+
+Let's visualise this
+
+```{r}
+hs2 %>%
+  left_join(hs_freq, by = "striker") %>%
+  mutate(is_hs = ifelse(n > 0, '1', '0')) %>%
+  filter(year >= 2011) %>%
+  ggplot(aes(x = as.factor(rank),
+             y = runs,
+             fill = is_hs))+
+  geom_col()+
+  facet_wrap(~year)+
+  labs(
+    x = "",
+    y = "Runs",
+    title = "<b style='color:#f8766d'>Top five</b> most runscorers
+             perform consistently.")+
+  theme(plot.title = element_markdown(),
+        legend.position = "none")
+
+```
+
+
+
+
+### Are first innings runs increasing over the years?
+
+We can visualise this by plotting runs in the first innings and matches from the beginning of IPL
+```{r Plotly plot}
+first_innings_run <- final_df %>%
+  mutate(runs = rowSums(select(.,runs_off_bat,extras), na.rm = TRUE)) %>%
+  group_by(match_id, innings) %>%
+  summarise(total_runs = sum(runs)) %>%
+  filter(innings == 1) %>%
+  left_join(.,final_df,by = 'match_id') %>%
+  distinct(match_id, .keep_all = TRUE) %>%
+  ungroup() %>%
+  mutate(match_no = row_number()) %>%
+  select(match_no, everything())
+
+p2 <- first_innings_run %>%
+  ggplot(aes(x = match_no, y = total_runs))+
+  geom_point(aes(color = as.factor(season.x))) +
+  geom_smooth(method = "lm")+
+  guides(color = guide_none())+
+  labs(
+    x = "Matches",
+    y = "Number of runs in first innings",
+    title = "Noticeable increase in the runs (Hover for more details)"
+  )
+
+ggplotly(p2)
+
+```
+
+## What about boundaries (4s and 6s)
+```{r}
+boundaries <- final_df %>% 
+    group_by(match_id, runs_off_bat) %>% 
+    count(runs_off_bat) %>% filter(runs_off_bat == 4 | runs_off_bat == 6 ) %>%
+  ungroup() %>% 
+  mutate(match_no = row_number()) %>%
+  select(match_no, everything())
+
+p5 <- boundaries %>% 
+    inner_join(.,first_innings_run, by = 'match_id') %>% 
+    ggplot(aes(x = match_no.y, y = n, color = as.factor(runs_off_bat.x))) +
+    geom_point()+
+    geom_smooth()+
+    labs(
+        x = "Matches",
+        y = "Number of boundaries per match",
+        title = "Boundaries and IPL matches",
+        col = "4/6"
+    )
+ggplotly(p5)
+
+```
+
+
+### Stats
+A simple linear model for testing for increase in runs over time
+```{r}
+lm(total_runs ~ match_no, first_innings_run) %>% summary()
+```
+

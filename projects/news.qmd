@@ -1,0 +1,127 @@
+---
+title: "Front Pages"
+---
+
+<div id="date-navigation">
+  <button id="prev-date">←</button>
+  <span id="current-date"></span>
+  <button id="next-date">→</button>
+</div>
+<div id="newspaper-grid" class="grid"></div>
+
+<style>
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.newspaper-row {
+  display: flex;
+  gap: 10px;
+}
+.newspaper-row img {
+    width: 350px !important;
+    height: 550px !important;
+    border: 1px solid #ccc;
+    object-fit: cover;
+    margin: 0;  /* Remove any default margins */
+}
+#date-navigation {
+  margin: 20px 0;
+  text-align: center;
+}
+#date-navigation button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+// Function to format date in YYYYMMDD format
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}${month}${day}`;
+}
+
+// Function to format date for display
+function formatDisplayDate(date) {
+  return date.toLocaleDateString('en-US', { 
+    weekday: 'long',
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+
+// Current date object
+let currentDate = new Date();
+
+// Newspaper IDs
+const newspapers = {
+  "The Hindu": "9ww5",
+  "The Indian Express": "1390",
+  "Hindustan Times": "9049",
+  "Mint": "4a91",
+  "Business Standard": "1396",
+  "The Hindu BusinessLine": "9wvw",
+  "The Washington Post": "1047",
+  "The Guardian": "1545"
+};
+
+// Function to generate PressReader URLs for a specific date and page
+function generatePressReaderURL(newspaperId, date, page) {
+  const dateStr = formatDate(date);
+  if (page === 1) {
+    return `https://t.prcdn.co/img?file=${newspaperId}${dateStr}00000000001001`;
+  } else {
+    return `https://t.prcdn.co/img?file=${newspaperId}${dateStr}00000000001001&page=${page}&scale=36`;
+  }
+}
+
+// Function to load newspapers for a specific date
+function loadNewspapers(date) {
+  const grid = document.getElementById("newspaper-grid");
+  grid.innerHTML = ""; // Clear the grid
+  
+  // Update display date
+  document.getElementById("current-date").textContent = formatDisplayDate(date);
+  
+  for (const [name, id] of Object.entries(newspapers)) {
+    const newspaperDiv = document.createElement("div");
+    newspaperDiv.className = "newspaper-row";
+    
+    // Add images for pages 1, 2, and 3
+    for (let page = 1; page <= 3; page++) {
+      const url = generatePressReaderURL(id, date, page);
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = `${name} - Page ${page}`;
+      img.style.width = "100%";
+      img.style.height = "auto";
+      newspaperDiv.appendChild(img);
+    }
+    
+    grid.appendChild(newspaperDiv);
+  }
+}
+
+// Set up event listeners and initial load
+document.addEventListener("DOMContentLoaded", function() {
+  // Initial load
+  loadNewspapers(currentDate);
+  
+  // Previous date button
+  document.getElementById("prev-date").addEventListener("click", function() {
+    currentDate.setDate(currentDate.getDate() - 1);
+    loadNewspapers(currentDate);
+  });
+  
+  // Next date button
+  document.getElementById("next-date").addEventListener("click", function() {
+    currentDate.setDate(currentDate.getDate() + 1);
+    loadNewspapers(currentDate);
+  });
+});
+</script>

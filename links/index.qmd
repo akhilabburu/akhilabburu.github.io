@@ -1,0 +1,14 @@
+---
+title: "Links"
+format: html
+listing:
+  contents: "*.qmd"
+  sort: "title asc"
+  type: default
+  template: simple.ejs
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  feed: true
+---
+

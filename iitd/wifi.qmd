@@ -1,0 +1,13 @@
+---
+title: Wi-Fi settings on Android 11+
+---
+
+Some Android versions require a bit of tweaking with the Wi-Fi settings when connecting to IIT Delhi network.
+
+EAP: PEAP\
+Phase 2 auth: MSCHAPV2\
+CA certs: Use system certificates\
+Online cert status: Do not verify\
+Domain: iitd.ernet.in \
+Identity: \<\ kerberos id \>\ \
+Password: \<\ kerberos pass \>\
