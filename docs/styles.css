@@ -1,0 +1,23 @@
+.navbar {
+  padding-top: 0.2rem; /* Adjust the top padding */
+  padding-bottom: 0.2rem; /* Adjust the bottom padding */
+  height: 50%;
+/*  background-color: #375a7f;   Set background color */
+  background-color: #2b9194;  /* Set background color */
+}
+
+.code-block {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.sourceCode {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.home-page #quarto-search {
+  display: none;
+}
