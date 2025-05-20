@@ -1,1 +1,2 @@
-Sitemap: https://akhilabburu.github.io/sitemap.xml
+User-agent: *
+Disallow:
