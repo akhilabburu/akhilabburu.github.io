@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Front Pages – Akhil Abburu</title>
+<title>2025-W20 – Akhil Abburu</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,7 +78,7 @@ gtag('config', 'G-6BW7D08FXB', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Front Pages – Akhil Abburu">
+<meta property="og:title" content="2025-W20 – Akhil Abburu">
 <meta property="og:site_name" content="Akhil Abburu">
 </head>
 
@@ -293,7 +293,7 @@ gtag('config', 'G-6BW7D08FXB', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Front Pages</h1>
+<h1 class="title">2025-W20</h1>
 </div>
 
 
@@ -310,127 +310,11 @@ gtag('config', 'G-6BW7D08FXB', { 'anonymize_ip': true});
 </header>
 
 
-<div id="date-navigation">
-<p><button id="prev-date">←</button> <span id="current-date"></span> <button id="next-date">→</button></p>
-</div>
-<div id="newspaper-grid" class="grid">
-
-</div>
-<style>
-.grid {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.newspaper-row {
-  display: flex;
-  gap: 10px;
-}
-.newspaper-row img {
-    width: 350px !important;
-    height: 550px !important;
-    border: 1px solid #ccc;
-    object-fit: cover;
-    margin: 0;  /* Remove any default margins */
-}
-#date-navigation {
-  margin: 20px 0;
-  text-align: center;
-}
-#date-navigation button {
-  padding: 5px 10px;
-  cursor: pointer;
-}
-</style>
-<script>
-// Function to format date in YYYYMMDD format
-function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}${month}${day}`;
-}
-
-// Function to format date for display
-function formatDisplayDate(date) {
-  return date.toLocaleDateString('en-US', { 
-    weekday: 'long',
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
-}
-
-// Current date object
-let currentDate = new Date();
-
-// Newspaper IDs
-const newspapers = {
-  "The Hindu": "9ww5",
-  "The Indian Express": "1390",
-  "Hindustan Times": "9049",
-  "Mint": "4a91",
-  "Business Standard": "1396",
-  "The Hindu BusinessLine": "9wvw",
-  "The Washington Post": "1047",
-  "The Guardian": "1545"
-};
-
-// Function to generate PressReader URLs for a specific date and page
-function generatePressReaderURL(newspaperId, date, page) {
-  const dateStr = formatDate(date);
-  if (page === 1) {
-    return `https://t.prcdn.co/img?file=${newspaperId}${dateStr}00000000001001`;
-  } else {
-    return `https://t.prcdn.co/img?file=${newspaperId}${dateStr}00000000001001&page=${page}&scale=36`;
-  }
-}
-
-// Function to load newspapers for a specific date
-function loadNewspapers(date) {
-  const grid = document.getElementById("newspaper-grid");
-  grid.innerHTML = ""; // Clear the grid
-  
-  // Update display date
-  document.getElementById("current-date").textContent = formatDisplayDate(date);
-  
-  for (const [name, id] of Object.entries(newspapers)) {
-    const newspaperDiv = document.createElement("div");
-    newspaperDiv.className = "newspaper-row";
-    
-    // Add images for pages 1, 2, and 3
-    for (let page = 1; page <= 3; page++) {
-      const url = generatePressReaderURL(id, date, page);
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = `${name} - Page ${page}`;
-      img.style.width = "100%";
-      img.style.height = "auto";
-      newspaperDiv.appendChild(img);
-    }
-    
-    grid.appendChild(newspaperDiv);
-  }
-}
-
-// Set up event listeners and initial load
-document.addEventListener("DOMContentLoaded", function() {
-  // Initial load
-  loadNewspapers(currentDate);
-  
-  // Previous date button
-  document.getElementById("prev-date").addEventListener("click", function() {
-    currentDate.setDate(currentDate.getDate() - 1);
-    loadNewspapers(currentDate);
-  });
-  
-  // Next date button
-  document.getElementById("next-date").addEventListener("click", function() {
-    currentDate.setDate(currentDate.getDate() + 1);
-    loadNewspapers(currentDate);
-  });
-});
-</script>
+<ul>
+<li><p>[nature] <a href="https://www.washingtonpost.com/travel/2025/04/23/snowy-owls-raptors-boston-airport/">The owl man is busy at Boston Logan Airport</a></p></li>
+<li><p>[science] <a href="https://www.washingtonpost.com/science/2025/05/04/spinal-tumor-eye-socket-surgery-first/">Surgeons bid for medical first: Removing spinal tumor through patient`s eye</a></p></li>
+<li><p>[science] <a href="https://www.washingtonpost.com/science/2025/05/07/korean-extreme-divers-genetics-chronic-disease/">The extreme divers of Korea</a></p></li>
+</ul>
 
 
 
