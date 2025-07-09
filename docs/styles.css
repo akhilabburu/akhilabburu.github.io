@@ -23,7 +23,20 @@
 }
 
 @media (max-width: 768px) {
-  .about-solana, .about-solana p, .about-solana h1, .about-solana h2, .about-solana h3 {
+  body, main, section, article, .content, .about, .about-entity, .about-contents, .about-body {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    align-items: start !important;
+    justify-content: start !important;
+  }
+
+  .about-contents {
+    display: block !important;
+  }
+
+  .about-entity {
     text-align: left !important;
   }
 }
+
