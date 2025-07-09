@@ -21,3 +21,9 @@
 .home-page #quarto-search {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .about-solana, .about-solana p, .about-solana h1, .about-solana h2, .about-solana h3 {
+    text-align: left !important;
+  }
+}
