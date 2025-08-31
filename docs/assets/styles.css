@@ -40,3 +40,15 @@
   }
 }
 
+/* Add this to your styles.css file */
+
+.annotated {
+  border-bottom: 1px dashed rgba(var(--bs-body-color-rgb), 0.5); /* A semi-transparent dashed line that adapts to light/dark mode */
+  cursor: help; /* Changes the cursor to a question mark on hover, indicating help/info is available */
+  text-decoration: none; /* Removes any default underline that might interfere */
+  transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Smooth transition on hover */
+}
+
+.annotated:hover {
+  border-bottom-color: rgba(var(--bs-body-color-rgb), 0.8); /* Makes the line more solid on hover */
+}
