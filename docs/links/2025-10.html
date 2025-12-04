@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Front Pages – Akhil Abburu</title>
+<title>2025-10 – Akhil Abburu</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,7 +61,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../assets/styles.css">
-<meta property="og:title" content="Front Pages – Akhil Abburu">
+<meta property="og:title" content="2025-10 – Akhil Abburu">
 <meta property="og:site_name" content="Akhil Abburu">
 </head>
 
@@ -275,7 +275,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Front Pages</h1>
+<h1 class="title">2025-10</h1>
 </div>
 
 
@@ -292,127 +292,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div id="date-navigation">
-<p><button id="prev-date">←</button> <span id="current-date"></span> <button id="next-date">→</button></p>
-</div>
-<div id="newspaper-grid" class="grid">
-
-</div>
-<style>
-.grid {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.newspaper-row {
-  display: flex;
-  gap: 10px;
-}
-.newspaper-row img {
-    width: 350px !important;
-    height: 550px !important;
-    border: 1px solid #ccc;
-    object-fit: cover;
-    margin: 0;  /* Remove any default margins */
-}
-#date-navigation {
-  margin: 20px 0;
-  text-align: center;
-}
-#date-navigation button {
-  padding: 5px 10px;
-  cursor: pointer;
-}
-</style>
-<script>
-// Function to format date in YYYYMMDD format
-function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}${month}${day}`;
-}
-
-// Function to format date for display
-function formatDisplayDate(date) {
-  return date.toLocaleDateString('en-US', { 
-    weekday: 'long',
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
-}
-
-// Current date object
-let currentDate = new Date();
-
-// Newspaper IDs
-const newspapers = {
-  "The Hindu": "9ww5",
-  "The Indian Express": "1390",
-  "Hindustan Times": "9049",
-  "Mint": "4a91",
-  "Business Standard": "1396",
-  "The Hindu BusinessLine": "9wvw",
-  "The Washington Post": "1047",
-  "The Guardian": "1545"
-};
-
-// Function to generate PressReader URLs for a specific date and page
-function generatePressReaderURL(newspaperId, date, page) {
-  const dateStr = formatDate(date);
-  if (page === 1) {
-    return `https://t.prcdn.co/img?file=${newspaperId}${dateStr}00000000001001`;
-  } else {
-    return `https://t.prcdn.co/img?file=${newspaperId}${dateStr}00000000001001&page=${page}&scale=36`;
-  }
-}
-
-// Function to load newspapers for a specific date
-function loadNewspapers(date) {
-  const grid = document.getElementById("newspaper-grid");
-  grid.innerHTML = ""; // Clear the grid
-  
-  // Update display date
-  document.getElementById("current-date").textContent = formatDisplayDate(date);
-  
-  for (const [name, id] of Object.entries(newspapers)) {
-    const newspaperDiv = document.createElement("div");
-    newspaperDiv.className = "newspaper-row";
-    
-    // Add images for pages 1, 2, and 3
-    for (let page = 1; page <= 3; page++) {
-      const url = generatePressReaderURL(id, date, page);
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = `${name} - Page ${page}`;
-      img.style.width = "100%";
-      img.style.height = "auto";
-      newspaperDiv.appendChild(img);
-    }
-    
-    grid.appendChild(newspaperDiv);
-  }
-}
-
-// Set up event listeners and initial load
-document.addEventListener("DOMContentLoaded", function() {
-  // Initial load
-  loadNewspapers(currentDate);
-  
-  // Previous date button
-  document.getElementById("prev-date").addEventListener("click", function() {
-    currentDate.setDate(currentDate.getDate() - 1);
-    loadNewspapers(currentDate);
-  });
-  
-  // Next date button
-  document.getElementById("next-date").addEventListener("click", function() {
-    currentDate.setDate(currentDate.getDate() + 1);
-    loadNewspapers(currentDate);
-  });
-});
-</script>
+<ul>
+<li><p>[nature] <a href="https://phys.org/news/2025-09-average-size-trees-amazon-co8322.html">Average size of trees in Amazon has increased as CO₂ levels rise</a></p></li>
+<li><p>[world] <a href="https://www.bloomberg.com/features/2025-dubai-storm-floods-cloud-seeding-geoengineering/">Dubai and Cloud Seeding</a></p></li>
+<li><p>[world] <a href="https://www.theguardian.com/books/2025/oct/07/the-pushkin-job-unmasking-the-thieves-behind-an-international-rare-books-heist">The Pushkin Job: unmasking the thieves behind an international rare books heist</a></p></li>
+<li><p>[culture] <a href="https://slate.com/life/2025/10/passport-name-change-united-states-mexico-spain-immigration.html">I used to have four names. Now, I’m not so sure.</a></p></li>
+<li><p>[science] <a href="https://www.scientificamerican.com/article/a-human-on-a-bicycle-is-among-the-most-efficient-forms-of-travel-in-the/">A Human on a Bicycle Is among the Most Efficient Forms of Travel in the Animal Kingdom</a></p></li>
+<li><p>[sports] <a href="https://theamericanscholar.org/second-and-long/">Second and Long: On (American) Football and Philosophy</a></p></li>
+<li><p>[sports] <a href="https://www.outsideonline.com/outdoor-adventure/water-activities/budimir-sobat-breath-hold/">The Man Who Held His Breath for 24 Minutes</a></p></li>
+<li><p>[culture] <a href="https://www.theguardian.com/technology/2025/oct/30/scamming-became-the-new-farming-inside-india-cybercrime-villages">Scamming became the new farming. Story of Jamtara</a></p></li>
+<li><p>[science] <a href="https://www.technologyreview.com/2025/10/16/1125159/ethics-embryo-screening-reproduction-baby/">The race to make the perfect baby is creating an ethical mess</a></p></li>
+<li><p>[travel] <a href="https://www.washingtonpost.com/travel/interactive/2025/queen-mary-2-ocean-liner/">A voyage on the Queen Mary 2, the last great ocean liner</a></p></li>
+<li><p>[world] <a href="https://www.theguardian.com/environment/2025/oct/31/miteni-factory-pfas-plant-italy-india">Toxic waste from Italian factory is poisoning an Indian village</a></p></li>
+</ul>
 
 
 
