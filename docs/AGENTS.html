@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>January 2026 – Akhil Abburu</title>
+<title>agents – Akhil Abburu</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,16 +23,16 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1c7b868981ba2666b4e4270029f40825.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc58b89eaeedb792616d5ede7d50ac5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-1c7b868981ba2666b4e4270029f40825.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-bc58b89eaeedb792616d5ede7d50ac5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -60,8 +60,9 @@ ul.task-list li input[type="checkbox"] {
 </script>
 
 
-<link rel="stylesheet" href="../assets/styles.css">
-<meta property="og:title" content="January 2026 – Akhil Abburu">
+<link rel="stylesheet" href="assets/styles.css">
+<meta property="og:title" content="Akhil Abburu">
+<meta property="og:description" content="Personal Website">
 <meta property="og:site_name" content="Akhil Abburu">
 </head>
 
@@ -232,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Akhil Abburu</span>
     </a>
   </div>
@@ -242,11 +243,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../output.html"> 
+    <a class="nav-link" href="./output.html"> 
 <span class="menu-text">Research Output</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts.html"> 
+    <a class="nav-link" href="./posts.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
@@ -270,51 +271,47 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">January 2026</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
+<p>AGENTS.md</p>
+<p>This file provides guidance to AI agents when working with code in this repository.</p>
+<section id="commands-and-development-workflow" class="level2">
+<h2 data-anchor-id="commands-and-development-workflow">Commands and Development Workflow</h2>
+<p>The primary entry point for applying and deploying updates is the provided Windows batch script:</p>
+<ul>
+<li><strong>Full Build &amp; Deploy</strong>: Execute <code>update_site.bat</code> in the project root. This orchestrates the entire build pipeline:
+<ol type="1">
+<li>Generates the monthly link <code>.qmd</code> files via R.</li>
+<li>Executes <code>quarto render</code> to compile the static site into the <code>docs/</code> folder.</li>
+<li>Automatically checks for differences, stages the <code>docs/</code> folder, and makes a git commit (with a generated timestamp message or user prompt) and pushes it to GitHub.</li>
+</ol></li>
+</ul>
+<section id="manual-commands" class="level3">
+<h3 data-anchor-id="manual-commands">Manual Commands</h3>
+<p>If isolating certain tasks is necessary: - <strong>Build Links Subdirectory</strong>: Execute <code>Rscript scripts/generate_monthly_links.R</code>. (Note: <code>update_site.bat</code> uses a statically configured local path to <code>Rscript.exe</code>; adjust if the environment differs). - <strong>Compile Site</strong>: Run <code>quarto render</code> directly to build the site locally. - <strong>Dev Preview</strong>: Run <code>quarto preview</code> to start a local hot-reloading development server.</p>
+</section>
+</section>
+<section id="high-level-architecture" class="level2">
+<h2 data-anchor-id="high-level-architecture">High-Level Architecture</h2>
+<p>This repository operates as a <strong>Quarto-based static website</strong> (<code>_quarto.yml</code>) utilized as a personal/academic portfolio, statically served via GitHub Pages directly from the <code>docs/</code> directory.</p>
+<ul>
+<li><p><strong>Automated Links Subsystem</strong>: A defining structural element is the dynamic link compilation system. The <code>links_database.csv</code> file acts as a centralized source of truth for tracking monthly interesting finds. Instead of manually writing markdown posts for each month, the <code>scripts/generate_monthly_links.R</code> parses this spreadsheet to automatically scaffold corresponding <code>.qmd</code> files in the <code>links/</code> directory. Any modifications to lists of articles/links should be directed entirely to <code>links_database.csv</code>.</p></li>
+<li><p><strong>Project Map</strong>:</p>
+<ul>
+<li><code>docs/</code>: The designated build output directory. <strong>Do not manually edit files here</strong>, as <code>quarto render</code> overwrites changes.</li>
+<li><code>iitd/</code>: A structured directory holding specific guides, tools, and scripts tailored to navigating the Indian Institute of Technology Delhi (e.g., proxy authentication, booklet generation, campus WiFi).</li>
+<li><code>projects/</code>: Standalone pages dedicated to interactive widgets or specific topics (cricket stats, maps, etc.).</li>
+<li><code>index.qmd</code> &amp; root documents: Control the initial entry points and primary navigation nodes. The <code>output.qmd</code> functions as the persistent location for academic presentation and publication manifests.</li>
+<li><code>assets/</code>: Stores shared CSS styling (<code>styles.css</code>) and custom light/dark theme SCSS overrides (<code>darkly.scss</code>, <code>flatly.scss</code>) referenced by the main Quarto configuration.</li>
+</ul></li>
+</ul>
 
 
-<div class="link-item">
-<span class="link-dot cat-world"><span class="dot-label">world</span></span><span class="link-content"><a href="https://www.nytimes.com/interactive/2025/12/13/world/asia/cia-nuclear-device-himalayas-nanda-devi.html">The CIA’s Lost Nuclear Device in the Himalayas</a> <span class="link-source">nytimes.com</span></span>
-</div>
-<div class="link-item">
-<span class="link-dot cat-culture"><span class="dot-label">culture</span></span><span class="link-content"><a href="https://www.thecut.com/article/crashing-rolliefest-watch-collector-convention.html">Crashing Rolliefest, the Watch Collector Convention</a> <span class="link-source">thecut.com</span></span>
-</div>
-<div class="link-item">
-<span class="link-dot cat-science"><span class="dot-label">science</span></span><span class="link-content"><a href="https://www.nature.com/articles/d41586-026-00044-7">Jellyfish sleep like humans — even though they don’t have brains</a> <span class="link-source">nature.com</span></span>
-</div>
-<div class="link-item">
-<span class="link-dot cat-science"><span class="dot-label">science</span></span> <span class="link-dot cat-nature"><span class="dot-label">nature</span></span><span class="link-content"><a href="https://www.nytimes.com/2026/01/08/science/dogs-research-vocabulary-toys.html">Dogs Build Their Vocabularies Like Toddlers</a> <span class="link-source">nytimes.com</span></span>
-</div>
-<div class="link-item">
-<span class="link-dot cat-tech"><span class="dot-label">tech</span></span> <span class="link-dot cat-science"><span class="dot-label">science</span></span> <span class="link-dot cat-culture"><span class="dot-label">culture</span></span><span class="link-content"><a href="https://www.nytimes.com/2026/01/03/business/chinese-peptides-silicon-valley.html">‘Chinese Peptides’ Are the Latest Biohacking Trend in the Tech World</a> <span class="link-source">nytimes.com</span></span>
-</div>
-<div class="link-item">
-<span class="link-dot cat-sports"><span class="dot-label">sports</span></span> <span class="link-dot cat-culture"><span class="dot-label">culture</span></span><span class="link-content"><a href="https://newlinesmag.com/spotlight/boxing-celebrity-and-the-death-of-mastery/">Boxing, Celebrity, and the Death of Mastery</a> <span class="link-source">newlinesmag.com</span></span>
-</div>
-<div class="link-item">
-<span class="link-dot cat-culture"><span class="dot-label">culture</span></span><span class="link-content"><a href="https://www.thehindu.com/books/diversity-on-the-small-screen-when-doordarshan-stitched-together-a-nation/article70482613.ece">Diversity on the small screen: When Doordarshan stitched together a nation</a> <span class="link-source">thehindu.com</span></span>
-</div>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -362,5 +359,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
