@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Front Pages – Akhil Abburu</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -27,12 +30,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1c7b868981ba2666b4e4270029f40825.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc58b89eaeedb792616d5ede7d50ac5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-cdea826c2cbf7a499f270b2c06eb5e28.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e8c5ce003b8a241ec750b6b393759b96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -293,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div id="date-navigation">
-<p><button id="prev-date">←</button> <span id="current-date"></span> <button id="next-date">→</button></p>
+<p><button id="prev-date">←</button> <input type="date" id="date-picker"> <button id="next-date">→</button></p>
 </div>
 <div id="newspaper-grid" class="grid">
 
@@ -307,6 +309,7 @@ ul.task-list li input[type="checkbox"] {
 .newspaper-row {
   display: flex;
   gap: 10px;
+  overflow-x: auto;
 }
 .newspaper-row img {
     width: 350px !important;
@@ -314,14 +317,35 @@ ul.task-list li input[type="checkbox"] {
     border: 1px solid #ccc;
     object-fit: cover;
     margin: 0;  /* Remove any default margins */
+    flex-shrink: 0;
 }
 #date-navigation {
   margin: 20px 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-#date-navigation button {
-  padding: 5px 10px;
+#date-navigation button, #date-picker {
+  padding: 5px 12px;
   cursor: pointer;
+  background-color: var(--bs-body-bg, #fff);
+  color: var(--bs-body-color, #000);
+  border: 1px solid var(--bs-border-color, #ccc);
+  border-radius: 4px;
+}
+#date-picker {
+  font-family: inherit;
+  font-size: 1rem;
+}
+#date-picker::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(var(--bs-body-color-rgb) == "255, 255, 255" ? 1 : 0);
+}
+#next-date:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 </style>
 <script>
@@ -333,18 +357,17 @@ function formatDate(date) {
   return `${year}${month}${day}`;
 }
 
-// Function to format date for display
-function formatDisplayDate(date) {
-  return date.toLocaleDateString('en-US', { 
-    weekday: 'long',
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
+// Function to format date for input (YYYY-MM-DD)
+function formatDateForInput(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 // Current date object
 let currentDate = new Date();
+const todayDate = new Date();
 
 // Newspaper IDs
 const newspapers = {
@@ -368,13 +391,30 @@ function generatePressReaderURL(newspaperId, date, page) {
   }
 }
 
+// Function to check if date is today
+function isToday(date) {
+  return formatDateForInput(date) === formatDateForInput(todayDate);
+}
+
+function constrainDate(date) {
+  if (formatDateForInput(date) > formatDateForInput(todayDate)) {
+    return new Date(todayDate);
+  }
+  return date;
+}
+
+
 // Function to load newspapers for a specific date
 function loadNewspapers(date) {
   const grid = document.getElementById("newspaper-grid");
   grid.innerHTML = ""; // Clear the grid
   
-  // Update display date
-  document.getElementById("current-date").textContent = formatDisplayDate(date);
+  // Update display date (date picker)
+  const inputDate = formatDateForInput(date);
+  document.getElementById("date-picker").value = inputDate;
+  
+  // Update Next button state
+  document.getElementById("next-date").disabled = isToday(date);
   
   for (const [name, id] of Object.entries(newspapers)) {
     const newspaperDiv = document.createElement("div");
@@ -388,6 +428,10 @@ function loadNewspapers(date) {
       img.alt = `${name} - Page ${page}`;
       img.style.width = "100%";
       img.style.height = "auto";
+      img.loading = "lazy";
+      img.onerror = function() {
+        this.style.display = 'none'; // Hide the frame if image fails to load
+      };
       newspaperDiv.appendChild(img);
     }
     
@@ -397,6 +441,9 @@ function loadNewspapers(date) {
 
 // Set up event listeners and initial load
 document.addEventListener("DOMContentLoaded", function() {
+  // Set max date for picker
+  document.getElementById("date-picker").max = formatDateForInput(todayDate);
+
   // Initial load
   loadNewspapers(currentDate);
   
@@ -408,8 +455,22 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Next date button
   document.getElementById("next-date").addEventListener("click", function() {
-    currentDate.setDate(currentDate.getDate() + 1);
-    loadNewspapers(currentDate);
+    if (!isToday(currentDate)) {
+      currentDate.setDate(currentDate.getDate() + 1);
+      currentDate = constrainDate(currentDate);
+      loadNewspapers(currentDate);
+    }
+  });
+
+  // Date picker change
+  document.getElementById("date-picker").addEventListener("change", function(e) {
+    if (e.target.value) {
+      const parts = e.target.value.split('-');
+      let selectedDate = new Date(parts[0], parts[1] - 1, parts[2]);
+      selectedDate = constrainDate(selectedDate);
+      currentDate = selectedDate;
+      loadNewspapers(currentDate);
+    }
   });
 });
 </script>

@@ -135,42 +135,42 @@
   {
     "objectID": "iitd/proxy_persistent.html",
     "href": "iitd/proxy_persistent.html",
-    "title": "IITD Proxy Keep-Alive",
+    "title": "Windows app for IITD Proxy (LAN)",
     "section": "",
-    "text": "A lightweight, single-file program to automate IIT Delhi proxy login sans browser and prevent session timeouts. It has a basic GUI. Also supports user categories (PhD, B.Tech, Faculty, etc.). Needs nothing but Windows."
+    "text": "A lightweight, single-file program to automate IIT Delhi proxy login sans browser and keeps you from getting logged out due to inactivity . It has a basic GUI. Also supports user categories (PhD, B.Tech, Faculty, etc.). Needs nothing but Windows."
   },
   {
     "objectID": "iitd/proxy_persistent.html#intro",
     "href": "iitd/proxy_persistent.html#intro",
-    "title": "IITD Proxy Keep-Alive",
+    "title": "Windows app for IITD Proxy (LAN)",
     "section": "",
-    "text": "A lightweight, single-file program to automate IIT Delhi proxy login sans browser and prevent session timeouts. It has a basic GUI. Also supports user categories (PhD, B.Tech, Faculty, etc.). Needs nothing but Windows."
+    "text": "A lightweight, single-file program to automate IIT Delhi proxy login sans browser and keeps you from getting logged out due to inactivity . It has a basic GUI. Also supports user categories (PhD, B.Tech, Faculty, etc.). Needs nothing but Windows."
   },
   {
     "objectID": "iitd/proxy_persistent.html#how-to",
     "href": "iitd/proxy_persistent.html#how-to",
-    "title": "IITD Proxy Keep-Alive",
+    "title": "Windows app for IITD Proxy (LAN)",
     "section": "How to",
     "text": "How to\n\nDownload and extract proxy.zip.\n\nAlternatively, copy the source cody into a .txt file and rename the extension to .cmd.\n\nDouble click the file to launch.\nSelect your category, enter kerberos details, and click Login.\nThe program will minimize itself to your system tray.\nWindows may sometimes block script files safety reasons!\n\nGo to properties of the downloaded file and check the box that says “Unblock” and click Ok.\nIf there is a popup that says the file is not signed by Microsoft, click More Info and Run Anyway."
   },
   {
     "objectID": "iitd/proxy_persistent.html#features",
     "href": "iitd/proxy_persistent.html#features",
-    "title": "IITD Proxy Keep-Alive",
+    "title": "Windows app for IITD Proxy (LAN)",
     "section": "Features",
-    "text": "Features\n\nIt creates a small json file to remember the last used Username and Category.\nSends a Windows Notification when it connects successfully.\nOptionally configures the needed system-wide proxy settings.\nHas status indicators for internet health.\nRight click the tray icon for options to View Logs or Exit the program."
+    "text": "Features\n\nRemembers your last used username and category between sessions.\nCan startup and auto-login.\nSends a Windows Notification when it connects successfully.\nOptionally configures the required system-wide proxy settings.\nHas status indicators for internet health.\nRight click the tray icon for options to View Logs or to Logout and Exit the program."
   },
   {
-    "objectID": "iitd/proxy_persistent.html#notes",
-    "href": "iitd/proxy_persistent.html#notes",
-    "title": "IITD Proxy Keep-Alive",
-    "section": "Notes",
-    "text": "Notes\n\nPassword is saved only to your system memory (not saved to disk).\nThe JSON config file is hidden in the same directory as the cmd file."
+    "objectID": "iitd/proxy_persistent.html#privacy-storage",
+    "href": "iitd/proxy_persistent.html#privacy-storage",
+    "title": "Windows app for IITD Proxy (LAN)",
+    "section": "Privacy & Storage",
+    "text": "Privacy & Storage\n\nPassword is saved only to your system memory (or to disk encrypted).\nThe JSON config file is hidden in the same directory as the cmd file."
   },
   {
     "objectID": "iitd/proxy_persistent.html#source",
     "href": "iitd/proxy_persistent.html#source",
-    "title": "IITD Proxy Keep-Alive",
+    "title": "Windows app for IITD Proxy (LAN)",
     "section": "Source",
     "text": "Source\nFull source code: Github"
   },
@@ -200,7 +200,7 @@
     "href": "index.html",
     "title": "Akhil Abburu",
     "section": "",
-    "text": "Hi!\nI am a PhD candidate at the Indian Institute of Technology Delhi. I work with Prof. Sumitava Mukherjee and Prof. Sumeet Agarwal.\nMy core research interest lies in judgment and decision making, understanding how people make the choices they do. My current work involves developing and rigorously comparing computational models (using MLE, Bayesian methods, etc.) to better understand phenomena like loss aversion and its variability. I’m also keenly interested in metascience, computational social science, and the intersection of human and artificial intelligence.\nEmail: akhil.abburu at hss.iitd.ac.in"
+    "text": "Hi!\nI am a PhD candidate at the Indian Institute of Technology Delhi. I work with Prof. Sumitava Mukherjee, HSS and Prof. Sumeet Agarwal, ScAI.\nMy core research interest lies in judgment and decision making, understanding how people make the choices they do. My current work involves developing and rigorously comparing computational models (using MLE, Bayesian methods, etc.) to better understand phenomena like loss aversion and its variability. I’m also keenly interested in metascience, computational social science, and the intersection of human and artificial intelligence.\nEmail: akhil.abburu at hss.iitd.ac.in\nNews\n\nMar 2026: Submitted Talk accepted at APS 2026\nFeb - Mar 2026: Abstracts accepted for summer 2026: SABE 2026, ICAP 2026\nJan 2026: Awarded the Research Excellence Travel Award (₹2,00,000) by IIT Delhi"
   },
   {
     "objectID": "links/2025-04.html",
