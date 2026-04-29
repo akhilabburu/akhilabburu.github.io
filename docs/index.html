@@ -1,350 +1,394 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Akhil Abburu</title>
+<meta name="description" content="PhD candidate at IIT Delhi researching judgment, decision making, and computational models of choice.">
+
+<meta property="og:title" content="Akhil Abburu">
+<meta property="og:description" content="PhD candidate at IIT Delhi researching judgment, decision making, and computational models of choice.">
+<meta property="og:site_name" content="Akhil Abburu">
+<meta property="og:url" content="https://akhilabburu.github.io/">
+<meta property="og:image" content="https://akhilabburu.github.io/assets/mug.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Akhil Abburu">
+<meta name="twitter:description" content="PhD candidate at IIT Delhi researching judgment, decision making, and computational models of choice.">
+<meta name="twitter:image" content="https://akhilabburu.github.io/assets/mug.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap">
+
+<link rel="preload" as="image" href="assets/mug.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/mug.jpg" fetchpriority="high">
+
+<link rel="prefetch" href="output.html">
+<link rel="prefetch" href="posts.html">
+
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
+:root {
+  --bg: #222;
+  --fg: #fff;
+  --muted: rgba(255,255,255,0.75);
+  --link: #00bc8c;
+  --link-hover: rgb(0,150,112);
+  --border: rgba(255,255,255,0.18);
+  --tooltip-bg: rgba(45,45,45,0.97);
+  --tooltip-fg: rgba(255,255,255,0.92);
+  --navbar-bg: #2b9194;
+  --navbar-fg: #fff;
+}
+.quarto-light {
+  --bg: #f2ecff;
+  --fg: #212529;
+  --muted: rgba(33,37,41,0.75);
+  --link: #18bc9c;
+  --link-hover: rgb(19,150,125);
+  --border: rgba(0,0,0,0.12);
+  --tooltip-bg: rgba(50,50,50,0.95);
+  --tooltip-fg: rgba(255,255,255,0.95);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 17px; }
+body {
+  margin: 0;
+  font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--navbar-bg); color: var(--navbar-fg);
+  padding: 0.5rem 1rem; z-index: 9999; border-radius: 0 0 4px 0;
+}
+.skip-link:focus { left: 0; text-decoration: none; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--navbar-bg);
+  padding: 0.2rem 1em;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.site-nav nav {
+  display: flex; align-items: center; gap: 0.25rem;
+  width: 100%;
+}
+.site-nav a, .site-nav button { color: var(--navbar-fg); }
+.brand {
+  font-size: 1.25rem; font-weight: 500;
+  padding: 0.3125rem 0;
+  margin-right: 2em;
+  white-space: nowrap;
+}
+.brand:hover { text-decoration: none; }
+.nav-list, .nav-tools {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; align-items: center;
+}
+.nav-list .nav-link {
+  display: inline-block;
+  padding: 0.5rem 0.6rem;
+  font-size: 1rem;
+}
+.nav-tools { margin-left: auto; gap: 0.25rem; }
+.nav-tool {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  padding: 0.25rem;
+}
+.nav-tool svg { width: 20px; height: 20px; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer;
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0;
+}
+.theme-toggle::before {
+  content: '';
+  display: inline-block;
+  width: 1.25rem; height: 1.25rem;
+  background-repeat: no-repeat; background-size: 1.25rem 1.25rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='rgba(254,254,254,1)' viewBox='0 0 16 16'%3E%3Cpath d='M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z'/%3E%3C/svg%3E");
+}
+.quarto-light .theme-toggle::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='rgba(254,254,254,1)' viewBox='0 0 16 16'%3E%3Cpath d='M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z'/%3E%3C/svg%3E");
+}
+.nav-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  width: 40px; height: 36px;
+  flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+  padding: 0;
+}
+.nav-toggle .bar {
+  display: block; width: 22px; height: 2px; background: var(--navbar-fg); border-radius: 1px;
+}
+
+@media (max-width: 991px) {
+  .nav-toggle { display: inline-flex; order: 1; }
+  .brand {
+    order: 2;
+    margin: 0 auto;
+    padding: 0.5em 0;
+    font-size: 1.1rem;
+  }
+  .nav-tools { order: 3; margin-left: 0; }
+  .nav-list {
+    order: 4;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+  .nav-list.open { max-height: 400px; }
+  .nav-list .nav-link {
+    display: block; width: 100%;
+    padding: 0.6rem 0.5rem;
+  }
+  .nav-list .linkedin-mobile { display: inline-flex !important; }
+}
+.nav-list .linkedin-mobile { display: none; }
+@media (max-width: 991px) {
+  .nav-tools .linkedin-desktop { display: none; }
+}
+
+main {
+  padding-top: 4em;
+  padding-bottom: 1em;
+  max-width: 832px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.about-entity {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 3em;
+  padding-bottom: 1em;
+}
+.about-content { flex: 1 1 0; min-width: 0; padding-right: 1.5em; }
+.about-content > p:first-child { margin-top: 0; }
+.about-content p { margin: 0 0 1em; }
+.about-image {
+  width: 11em; height: 11em;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  margin-bottom: 1.5em;
+  display: block;
+}
+@media (max-width: 768px) {
+  .about-entity {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding-top: 2em;
+    gap: 0.5em;
+  }
+  .about-content { padding-right: 0; }
+}
+
+.annotated {
+  border-bottom: 1px dashed var(--muted);
+  cursor: help;
+  text-decoration: none;
+  position: relative;
+  transition: border-color 0.2s ease-in-out;
+}
+.annotated:hover { border-bottom-color: var(--fg); text-decoration: none; }
+.annotated[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 4px); left: 0;
+  background: var(--tooltip-bg);
+  color: var(--tooltip-fg);
+  padding: 0.35em 0.6em;
+  border-radius: 4px;
+  font-size: 0.8rem; line-height: 1.4;
+  font-weight: 400;
+  font-style: normal;
+  white-space: normal;
+  width: max-content;
+  max-width: min(280px, calc(100vw - 32px));
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.15s ease-in-out 0.15s;
+  z-index: 50;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+@media (hover: hover) {
+  .annotated[data-tooltip]:hover::after,
+  .annotated[data-tooltip]:focus::after { opacity: 1; }
+}
+.annotated.tap-active::after { opacity: 1 !important; transition-delay: 0s; }
+
+.news h2 {
+  font-size: 1rem; font-weight: 400;
+  margin: 2.5em 0 0.4em;
+}
+.news ul { padding-left: 1.5em; margin: 0; }
+.news li { margin-bottom: 0.05em; line-height: 1.45; }
+.news time { color: inherit; }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
 }
 </style>
 
-
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cdea826c2cbf7a499f270b2c06eb5e28.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e8c5ce003b8a241ec750b6b393759b96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+<script>
+(function() {
+  try {
+    var stored = localStorage.getItem("quarto-color-scheme");
+    if (stored === "default") {
+      document.documentElement.dataset.boot = "quarto-light";
+    } else {
+      document.documentElement.dataset.boot = "quarto-dark";
+    }
+  } catch (e) {
+    document.documentElement.dataset.boot = "quarto-dark";
   }
-}</script>
-<style>html{ scroll-behavior: smooth; }</style>
-<script data-goatcounter="https://1346920.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6BW7D08FXB"></script>
+})();
+</script>
+
+<script data-goatcounter="https://1346920.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BW7D08FXB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-6BW7D08FXB');
 </script>
-
-
-<link rel="stylesheet" href="assets/styles.css">
-<meta property="og:title" content="– Akhil Abburu">
-<meta property="og:description" content="Personal Website">
-<meta property="og:site_name" content="Akhil Abburu">
 </head>
+<body class="quarto-dark">
+<script>document.body.className = document.documentElement.dataset.boot || "quarto-dark";</script>
 
-<body class="nav-fixed fullcontent quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-nav" role="banner">
+  <nav aria-label="Primary">
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+    <a href="./" class="brand">Akhil Abburu</a>
+    <ul class="nav-list" id="primary-nav">
+      <li><a href="./output.html" class="nav-link">Research Output</a></li>
+      <li><a href="./posts.html" class="nav-link">Projects</a></li>
+      <li class="linkedin-mobile">
+        <a href="https://www.linkedin.com/in/akhilabburu/" class="nav-link" target="_blank" rel="noopener">LinkedIn</a>
+      </li>
+    </ul>
+    <ul class="nav-tools">
+      <li class="linkedin-desktop">
+        <a href="https://www.linkedin.com/in/akhilabburu/" class="nav-tool" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode"></button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <h1 class="visually-hidden">Akhil Abburu</h1>
+  <section class="about-entity">
+    <div class="about-content">
+      <p>Hi!</p>
+      <p>I am a PhD candidate at the <a href="https://home.iitd.ac.in/">Indian Institute of Technology Delhi</a>. I work with <a href="https://web.iitd.ac.in/~sm1/">Prof.&nbsp;Sumitava Mukherjee</a> and <a href="https://web.iitd.ac.in/~sumeet/">Prof.&nbsp;Sumeet Agarwal</a>.</p>
+      <p>My core research interest lies in judgment and decision making, understanding how people make the choices they do. My current work involves developing and rigorously comparing <span class="annotated" tabindex="0" data-tooltip="See work on Loss Aversion: Abburu et al. Talk @ CogSci 2025; Abburu et al. ACCS 2024">computational models</span> (using MLE, Bayesian methods, etc.) to better understand phenomena like <a class="annotated" href="https://escholarship.org/uc/item/24w9p95m" data-tooltip="Abburu, A., Agarwal, S., &amp; Mukherjee, S. (2025). Heterogeneity in Loss Aversion Estimates across Modeling Approaches. Proceedings of the Annual Meeting of the Cognitive Science Society, 47(0)">loss aversion and its variability</a>. I&rsquo;m also keenly interested in <a class="annotated" href="https://escholarship.org/uc/item/0m78k9jj" data-tooltip="Abburu, A., &amp; Mukherjee, S. (2024). Cognitive Science is (largely) Psychological Science. Proceedings of the Annual Meeting of the Cognitive Science Society, 46(0)">metascience</a>, <span class="annotated" tabindex="0" data-tooltip="Abburu et al. (2026) ICAP">computational social science</span>, and the <span class="annotated" tabindex="0" data-tooltip="Abburu, A. (2024). LLMs and Ethical Dilemmas: Would AI push you off a boat to save five people? ACCS 2024">intersection of human and artificial intelligence</span>.</p>
+      <p>Email: akhil.abburu at hss.iitd.ac.in</p>
+
+      <section class="news" aria-label="News">
+        <h2>News</h2>
+        <ul>
+          <li><time datetime="2026-04">Apr 2026</time>: Paper accepted at <a href="https://cognitivesciencesociety.org/cogsci-2026/">CogSci 2026</a></li>
+          <li><time datetime="2026-03">Mar 2026</time>: Submitted Talk accepted at <a href="https://www.psychologicalscience.org/conventions/2026-annual-convention">APS 2026</a></li>
+          <li><time datetime="2026-02/2026-04">Feb &ndash; Apr 2026</time>: Abstracts accepted for summer 2026: <a href="https://sabe2026-conference.org/">SABE 2026</a>, <a href="https://icap2026.org/">ICAP 2026</a>, <a href="https://iarep2026.com/">IAREP 2026</a></li>
+          <li><time datetime="2026-01">Jan 2026</time>: Awarded the Research Excellence Travel Award (&#8377;2,00,000) by IIT Delhi</li>
+        </ul>
+      </section>
+    </div>
+    <picture>
+      <source srcset="assets/mug.webp" type="image/webp">
+      <img src="assets/mug.jpg" alt="Profile photo of Akhil Abburu" width="315" height="315" class="about-image" fetchpriority="high">
+    </picture>
+  </section>
+</main>
+
+<script>
+(function() {
+  var KEY = "quarto-color-scheme";
+  var body = document.body;
+
+  var btn = document.querySelector(".theme-toggle");
+  if (btn) {
+    btn.addEventListener("click", function() {
+      var goLight = !body.classList.contains("quarto-light");
+      body.classList.toggle("quarto-light", goLight);
+      body.classList.toggle("quarto-dark", !goLight);
+      try { localStorage.setItem(KEY, goLight ? "default" : "alternate"); } catch (e) {}
+    });
+  }
+
+  var navToggle = document.querySelector(".nav-toggle");
+  var navList = document.getElementById("primary-nav");
+  if (navToggle && navList) {
+    navToggle.addEventListener("click", function() {
+      var open = navList.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
+  var isTouch = matchMedia("(hover: none)").matches;
+  if (isTouch) {
+    document.querySelectorAll(".annotated[data-tooltip]").forEach(function(el) {
+      el.addEventListener("click", function(e) {
+        if (el.tagName === "A" && !el.classList.contains("tap-active")) {
+          e.preventDefault();
+          document.querySelectorAll(".annotated.tap-active").forEach(function(o) {
+            if (o !== el) o.classList.remove("tap-active");
+          });
+          el.classList.add("tap-active");
+        } else if (el.tagName === "SPAN") {
+          el.classList.toggle("tap-active");
         }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
+      });
+    });
+    document.addEventListener("click", function(e) {
+      if (!e.target.closest(".annotated")) {
+        document.querySelectorAll(".annotated.tap-active").forEach(function(o) {
+          o.classList.remove("tap-active");
         });
       }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = true;
-    const darkModeDefault = authorPrefersDark;
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
-
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Akhil Abburu</span>
-    </a>
-  </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./output.html"> 
-<span class="menu-text">Research Output</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
-<span class="menu-text">Projects</span></a>
-  </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/akhilabburu/"> <i class="bi bi-linkedin" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    
-<!-- main -->
-<div class="quarto-about-solana column-body">
-  <div class="about-entity">
-    <div class="entity-contents">
-      <header id="title-block-header" class="quarto-title-block"></header> 
-      <div class="about-contents"><main class="content" id="quarto-document-content">
-
-<p>Hi!</p>
-<p>I am a PhD candidate at the <a href="https://home.iitd.ac.in/">Indian Institute of Technology Delhi</a>. I work with <a href="https://web.iitd.ac.in/~sm1/">Prof.&nbsp;Sumitava Mukherjee</a> and <a href="https://web.iitd.ac.in/~sumeet/">Prof.&nbsp;Sumeet Agarwal</a>.</p>
-<p>My core research interest lies in judgment and decision making, understanding how people make the choices they do. My current work involves developing and rigorously comparing <span class="annotated" title="See work on Loss Aversion: Abburu et al. Talk @ CogSci 2025; Abburu et al. ACCS 2024">computational models</span> (using MLE, Bayesian methods, etc.) to better understand phenomena like <a href="https://escholarship.org/uc/item/24w9p95m" title="Abburu, A., Agarwal, S., &amp; Mukherjee, S. (2025). Heterogeneity in Loss Aversion Estimates across Modeling Approaches. Proceedings of the Annual Meeting of the Cognitive Science Society, 47(0)">loss aversion and its variability</a>. I’m also keenly interested in <a href="https://escholarship.org/uc/item/0m78k9jj" title="Abburu, A., &amp; Mukherjee, S. (2024). Cognitive Science is (largely) Psychological Science. Proceedings of the Annual Meeting of the Cognitive Science Society, 46(0)">metascience</a>, <span class="annotated" title="Abburu et al. (2026) ICAP">computational social science</span>, and the <span class="annotated" title="Abburu, A. (2024). LLMs and Ethical Dilemmas: Would AI push you off a boat to save five people? ACCS 2024">intersection of human and artificial intelligence</span>.</p>
-<p>Email: akhil.abburu at hss.iitd.ac.in</p>
-<p><br>
-</p>
-<p>News</p>
-<ul>
-<li>Apr 2026: Paper accepted at <a href="https://cognitivesciencesociety.org/cogsci-2026/">CogSci 2026</a></li>
-<li>Mar 2026: Submitted Talk accepted at <a href="https://www.psychologicalscience.org/conventions/2026-annual-convention">APS 2026</a></li>
-<li>Feb - Apr 2026: Abstracts accepted for summer 2026: <a href="https://sabe2026-conference.org/">SABE 2026</a>, <a href="https://icap2026.org/">ICAP 2026</a>, <a href="https://iarep2026.com/">IAREP 2026</a></li>
-<li>Jan 2026: Awarded the Research Excellence Travel Award (₹2,00,000) by IIT Delhi</li>
-</ul>
-
-
-</main></div>
-    </div>
-    <img src="assets/mug.jpg" alt="profile photo" class="about-image
-  rounded " style="width: 11em;">
-  </div>
-</div>
- <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
-    }
-    setColorSchemeToggle(hasAlternateSentinel())
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("^(?:http:|https:)\/\/akhilabburu\.github\.io");
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-            // target, if specified
-            link.setAttribute("target", "_blank");
-            if (link.getAttribute("rel") === null) {
-              link.setAttribute("rel", "noopener");
-            }
-        }
-      }
-  });
-  </script>
-</div> <!-- /content -->
-
-
-
-
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
-</body></html>
+    });
+  }
+})();
+</script>
+</body>
+</html>
