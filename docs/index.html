@@ -150,11 +150,11 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   .nav-toggle { display: inline-flex; order: 1; }
   .brand {
     order: 2;
-    margin: 0 auto;
+    margin: 0;
     padding: 0.5em 0;
     font-size: 1.1rem;
   }
-  .nav-tools { order: 3; margin-left: 0; }
+  .nav-tools { order: 3; margin-left: auto; }
   .nav-list {
     order: 4;
     flex-basis: 100%;
@@ -169,12 +169,8 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
     display: block; width: 100%;
     padding: 0.6rem 0.5rem;
   }
-  .nav-list .linkedin-mobile { display: inline-flex !important; }
 }
 .nav-list .linkedin-mobile { display: none; }
-@media (max-width: 991px) {
-  .nav-tools .linkedin-desktop { display: none; }
-}
 
 main {
   padding-top: 4em;
