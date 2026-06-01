@@ -1,0 +1,348 @@
+.navbar {
+  padding-top: 0.2rem;
+  /* Adjust the top padding */
+  padding-bottom: 0.2rem;
+  /* Adjust the bottom padding */
+  height: 50%;
+  /*  background-color: #375a7f;   Set background color */
+  background-color: #2b9194;
+  /* Set background color */
+}
+
+.code-block {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.sourceCode {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.home-page #quarto-search {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  body,
+  main,
+  section,
+  article,
+  .content,
+  .about,
+  .about-entity,
+  .about-contents,
+  .about-body {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    align-items: start !important;
+    justify-content: start !important;
+  }
+
+  .about-contents {
+    display: block !important;
+  }
+
+  .about-entity {
+    text-align: left !important;
+  }
+}
+
+/* Add this to your styles.css file */
+
+.annotated {
+  border-bottom: 1px dashed rgba(var(--bs-body-color-rgb), 0.5);
+  /* A semi-transparent dashed line that adapts to light/dark mode */
+  cursor: help;
+  /* Changes the cursor to a question mark on hover, indicating help/info is available */
+  text-decoration: none;
+  /* Removes any default underline that might interfere */
+  transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  /* Smooth transition on hover */
+}
+
+.annotated:hover {
+  border-bottom-color: rgba(var(--bs-body-color-rgb), 0.8);
+  /* Makes the line more solid on hover */
+}
+
+/* --- Links section: Tag filter bar --- */
+
+#tag-filters {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.3rem;
+  align-items: center;
+  overflow-x: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+#tag-filters .tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2em 0.55em;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  user-select: none;
+}
+
+#tag-filters .tag.active {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #tag-filters .tag:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+#tag-filters .divider {
+  width: 1px;
+  height: 1.1em;
+  background: rgba(var(--bs-body-color-rgb), 0.2);
+  margin: 0 0.15rem;
+  flex-shrink: 0;
+}
+
+#tag-filters .toggle-all {
+  font-size: 0.68rem;
+  padding: 0.2em 0.5em;
+  border-radius: 9999px;
+  border: 1px solid rgba(var(--bs-body-color-rgb), 0.25);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, opacity 0.15s ease;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #tag-filters .toggle-all:hover {
+    opacity: 1;
+    border-color: rgba(var(--bs-body-color-rgb), 0.5);
+  }
+}
+
+/* Per-category colors */
+.cat-science {
+  background-color: #3b82f6;
+}
+
+.cat-tech {
+  background-color: #8b5cf6;
+}
+
+.cat-world {
+  background-color: #ef4444;
+}
+
+.cat-culture {
+  background-color: #f59e0b;
+}
+
+.cat-food {
+  background-color: #10b981;
+}
+
+.cat-nature {
+  background-color: #22c55e;
+}
+
+.cat-space {
+  background-color: #6366f1;
+}
+
+.cat-history {
+  background-color: #a16207;
+}
+
+.cat-sports {
+  background-color: #06b6d4;
+}
+
+.cat-health {
+  background-color: #ec4899;
+}
+
+.cat-education {
+  background-color: #14b8a6;
+}
+
+.cat-art {
+  background-color: #e879a0;
+}
+
+.cat-language {
+  background-color: #a78bfa;
+}
+
+.cat-travel {
+  background-color: #fb923c;
+}
+
+/* Filter bar tag text colors */
+.tag.cat-science,
+.tag.cat-tech,
+.tag.cat-world,
+.tag.cat-space,
+.tag.cat-history,
+.tag.cat-food,
+.tag.cat-health,
+.tag.cat-education {
+  color: #fff;
+}
+
+.tag.cat-culture,
+.tag.cat-nature,
+.tag.cat-sports,
+.tag.cat-art,
+.tag.cat-language,
+.tag.cat-travel {
+  color: #1a1a1a;
+}
+
+/* --- Links section: Items with colored dots --- */
+
+.link-item {
+  margin-bottom: 0.35rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.link-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 8px;
+  max-height: 8px;
+  min-width: 8px;
+  min-height: 8px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+  transition: max-width 0.2s ease, max-height 0.2s ease, padding 0.2s ease;
+  transition-delay: 0s;
+  overflow: hidden;
+  cursor: default;
+  vertical-align: middle;
+  box-sizing: content-box;
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  margin: -4px;
+}
+
+.link-dot .dot-label {
+  font-size: 0;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  opacity: 0;
+  transition: font-size 0.2s ease, opacity 0.15s ease;
+  transition-delay: 0s;
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.link-dot:hover {
+  max-width: 200px;
+  max-height: 40px;
+  padding: 0.2em 0.55em;
+  transition-delay: 1s;
+}
+
+.link-dot:hover .dot-label {
+  font-size: 0.7rem;
+  opacity: 1;
+  transition-delay: 1s;
+}
+
+@media (hover: none) and (pointer: coarse) {
+
+  .link-dot:hover,
+  .link-dot:hover .dot-label {
+    transition-delay: 0s;
+  }
+}
+
+/* Dot label text colors */
+.link-dot.cat-science .dot-label,
+.link-dot.cat-tech .dot-label,
+.link-dot.cat-world .dot-label,
+.link-dot.cat-space .dot-label,
+.link-dot.cat-history .dot-label,
+.link-dot.cat-food .dot-label,
+.link-dot.cat-health .dot-label,
+.link-dot.cat-education .dot-label {
+  color: #fff;
+}
+
+.link-dot.cat-culture .dot-label,
+.link-dot.cat-nature .dot-label,
+.link-dot.cat-sports .dot-label,
+.link-dot.cat-art .dot-label,
+.link-dot.cat-language .dot-label,
+.link-dot.cat-travel .dot-label {
+  color: #1a1a1a;
+}
+
+.link-item .link-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.link-item .link-desc {
+  display: block;
+  font-size: 0.85em;
+  opacity: 0.6;
+  font-style: italic;
+  margin-top: 0.1em;
+}
+
+.link-source {
+  font-size: 0.7rem;
+  opacity: 0.4;
+  font-family: monospace;
+  margin-left: 0.3em;
+  word-break: break-all;
+}
+
+/* --- Links section: Month groups --- */
+
+.month-group {
+  margin-bottom: 1.8rem;
+}
+
+.month-group h3 {
+  margin-bottom: 0.5rem;
+}
+
+.month-group h3 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(var(--bs-body-color-rgb), 0.25);
+  transition: border-color 0.15s ease;
+}
+
+.month-group h3 a:hover {
+  border-bottom-color: rgba(var(--bs-body-color-rgb), 0.6);
+}
