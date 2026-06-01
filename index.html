@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://akhilabburu.github.io/assets/mug.jpg">
 
 <link rel="preload" as="font" type="font/woff2" href="assets/lato-400-latin.woff2" crossorigin>
-<link rel="preload" as="image" href="assets/mug.avif" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" href="assets/mug-192.avif" type="image/avif" imagesrcset="assets/mug-192.avif 192w, assets/mug.avif 315w" imagesizes="11em" fetchpriority="high">
 
 <script>
 (function() {
@@ -370,9 +370,9 @@ main {
       </section>
     </div>
     <picture>
-      <source srcset="assets/mug.avif" type="image/avif">
-      <source srcset="assets/mug.webp" type="image/webp">
-      <img src="assets/mug.jpg" alt="Profile photo of Akhil Abburu" width="315" height="315" class="about-image" fetchpriority="high" decoding="async">
+      <source srcset="assets/mug-192.avif 192w, assets/mug.avif 315w" sizes="11em" type="image/avif">
+      <source srcset="assets/mug-192.webp 192w, assets/mug.webp 315w" sizes="11em" type="image/webp">
+      <img src="assets/mug-192.jpg" srcset="assets/mug-192.jpg 192w, assets/mug.jpg 315w" sizes="11em" alt="Profile photo of Akhil Abburu" width="192" height="192" class="about-image" fetchpriority="high" decoding="async">
     </picture>
   </section>
 </main>
