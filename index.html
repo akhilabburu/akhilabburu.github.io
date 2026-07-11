@@ -54,6 +54,10 @@
   src: url(assets/lato-400-latin-ext.woff2) format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+@font-face {
+  font-family: 'bootstrap-icons'; font-style: normal; font-weight: 400; font-display: block;
+  src: url(site_libs/bootstrap/bootstrap-icons.woff) format('woff');
+}
 :root {
   --bg: #222;
   --fg: #fff;
@@ -107,18 +111,22 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   background: var(--navbar-bg);
   padding: 0.2rem 1em;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 .site-nav nav {
-  display: flex; align-items: center; gap: 0.25rem;
+  display: flex; align-items: center;
   width: 100%;
+  min-height: 2.869375rem;
+  padding: 0 0.75rem;
   flex-wrap: wrap;
 }
 .site-nav a, .site-nav button { color: var(--navbar-fg); }
 .brand {
-  font-size: 1.25rem; font-weight: 500;
-  padding: 0.3125rem 0;
-  margin-right: 2em;
+  display: block;
+  box-sizing: border-box;
+  width: 8.2235rem;
+  font-size: 1.25rem; font-weight: 400;
+  line-height: 2.125rem;
+  padding: 0.3125rem 1rem 0.3125rem 0;
   white-space: nowrap;
 }
 .brand:hover { text-decoration: none; }
@@ -126,70 +134,122 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   list-style: none; padding: 0; margin: 0;
   display: flex; align-items: center;
 }
+@media (min-width: 992px) {
+  .nav-list { margin-top: 1px; }
+}
 .nav-list .nav-link {
-  display: inline-block;
+  display: block;
   padding: 0.5rem 0.6rem;
   font-size: 1rem;
 }
-.nav-tools { margin-left: auto; gap: 0.25rem; }
+.nav-tools { align-self: stretch; margin-left: auto; }
+.nav-tools > li { display: flex; align-items: center; }
+.linkedin-desktop { align-self: stretch; }
+.nav-tools > li:last-child {
+  display: block;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.7rem;
+}
 .nav-tool {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px;
-  padding: 0.25rem;
+  display: block;
+  width: auto; height: 100%;
+  padding: 0.5rem;
+  font-size: 1.1rem;
 }
-.nav-tool svg { width: 20px; height: 20px; }
+.linkedin-icon { padding-right: 1px; }
+.linkedin-icon::before {
+  content: "\f472";
+  display: inline-block;
+  font-family: bootstrap-icons;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  line-height: 1;
+  text-transform: none;
+  vertical-align: -0.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .theme-toggle {
-  background: none; border: none; cursor: pointer;
-  width: 40px; height: 40px;
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 0;
+  display: inline;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  cursor: pointer;
 }
-.theme-toggle::before {
+.theme-icon::before {
   content: '';
   display: inline-block;
-  width: 1.25rem; height: 1.25rem;
-  background-repeat: no-repeat; background-size: 1.25rem 1.25rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='rgba(254,254,254,1)' viewBox='0 0 16 16'%3E%3Cpath d='M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z'/%3E%3C/svg%3E");
+  width: 1rem; height: 1rem;
+  vertical-align: -0.125em;
+  background-repeat: no-repeat; background-size: 1rem 1rem;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgba(255, 255, 255, 1)" class="bi bi-toggle-on" viewBox="0 0 16 16"><path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>');
 }
-.quarto-light .theme-toggle::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='rgba(254,254,254,1)' viewBox='0 0 16 16'%3E%3Cpath d='M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z'/%3E%3C/svg%3E");
+.quarto-light .theme-icon::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgba(255, 255, 255, 1)" class="bi bi-toggle-off" viewBox="0 0 16 16"><path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/></svg>');
 }
 .nav-toggle {
   display: none;
-  background: none; border: none; cursor: pointer;
-  width: 40px; height: 36px;
-  flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+  background-color: transparent; border: 1px solid transparent; border-radius: 0.25rem; cursor: pointer;
+  width: 1.993rem; height: 1.993rem;
+  margin-right: 0.625rem;
   padding: 0;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.875rem;
 }
-.nav-toggle .bar {
-  display: block; width: 22px; height: 2px; background: var(--navbar-fg); border-radius: 1px;
+.nav-toggle:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #fff;
 }
+.nav-toggle .bar { display: none; }
 
 @media (max-width: 991px) {
-  .nav-toggle { display: inline-flex; order: 1; }
+  .site-nav nav { min-height: 2.75rem; }
+  .nav-toggle { display: block; order: 1; flex: 0 0 auto; }
   .brand {
     order: 2;
-    margin: 0;
-    padding: 0.5em 0;
-    font-size: 1.1rem;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .nav-tools { order: 3; margin-left: auto; }
+  .nav-tools {
+    order: 3;
+    align-self: center;
+    flex: 0 0 1.5rem;
+    height: 1.7rem;
+    margin-left: 0;
+  }
+  .linkedin-desktop { display: none !important; }
   .nav-list {
     order: 4;
     flex-basis: 100%;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 0;
     max-height: 0; overflow: hidden;
     transition: max-height 0.2s ease-out;
   }
   .nav-list.open { max-height: 400px; }
+  .nav-list > li { width: 100%; margin-top: 1px; }
   .nav-list .nav-link {
     display: block; width: 100%;
-    padding: 0.6rem 0.5rem;
+    padding: 0.5rem 0.6rem;
+  }
+  .nav-list .linkedin-mobile {
+    margin-top: 0;
+  }
+  .nav-list .linkedin-mobile .nav-link {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
   }
 }
 .nav-list .linkedin-mobile { display: none; }
+@media (max-width: 991px) {
+  .nav-list .linkedin-mobile { display: list-item; }
+}
 
 main {
   padding-top: 4em;
@@ -332,19 +392,17 @@ main {
       <li><a href="./output.html" class="nav-link">Research Output</a></li>
       <li><a href="./posts.html" class="nav-link">Projects</a></li>
       <li class="linkedin-mobile">
-        <a href="https://www.linkedin.com/in/akhilabburu/" class="nav-link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/akhilabburu/" class="nav-link" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="linkedin-icon" aria-hidden="true"></i></a>
       </li>
     </ul>
     <ul class="nav-tools">
       <li class="linkedin-desktop">
         <a href="https://www.linkedin.com/in/akhilabburu/" class="nav-tool" aria-label="LinkedIn" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-          </svg>
+          <i class="linkedin-icon" aria-hidden="true"></i>
         </a>
       </li>
       <li>
-        <button class="theme-toggle" type="button" aria-label="Toggle dark mode"></button>
+        <a href="" class="theme-toggle" aria-label="Toggle dark mode"><i class="theme-icon"></i></a>
       </li>
     </ul>
   </nav>
@@ -362,6 +420,7 @@ main {
       <section class="news" aria-label="News">
         <h2>News</h2>
         <ul>
+          <li><time datetime="2026-06">Jun 2026</time>: Started a new role evaluating AI systems at Microsoft</li>
           <li><time datetime="2026-04">Apr 2026</time>: Paper accepted at <a href="https://cognitivesciencesociety.org/cogsci-2026/">CogSci 2026</a></li>
           <li><time datetime="2026-03">Mar 2026</time>: Submitted Talk accepted at <a href="https://www.psychologicalscience.org/conventions/2026-annual-convention">APS 2026</a></li>
           <li><time datetime="2026-02/2026-04">Feb &ndash; Apr 2026</time>: Abstracts accepted for summer 2026: <a href="https://sabe2026-conference.org/">SABE 2026</a>, <a href="https://icap2026.org/">ICAP 2026</a>, <a href="https://iarep2026.com/">IAREP 2026</a></li>
@@ -384,7 +443,8 @@ main {
 
   var btn = document.querySelector(".theme-toggle");
   if (btn) {
-    btn.addEventListener("click", function() {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
       var goLight = !root.classList.contains("quarto-light");
       root.classList.toggle("quarto-light", goLight);
       root.classList.toggle("quarto-dark", !goLight);
